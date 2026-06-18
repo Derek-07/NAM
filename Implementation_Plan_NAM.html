@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementation Plan - NAM Dehradun | Arman Goswami</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0f1860; --primary-light: #1a237e; --accent: #1FCAC5; --accent-dark: #179e9a;
+            --dark: #1a1a2e; --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1; --gray-400: #94a3b8; --gray-600: #475569; --gray-700: #334155;
+            --gray-800: #1e293b; --red: #ef4444; --orange: #f59e0b; --green: #10b981;
+        }
+        body { font-family: 'Inter', sans-serif; background: #f0f4f8; color: var(--gray-800); line-height: 1.5; font-size: 11px; }
+        .page { max-width: 800px; margin: 30px auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent-dark) 100%); color: white; padding: 30px 40px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .header-left h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 2px; }
+        .header-left p { font-size: 13px; opacity: 0.8; font-weight: 300; }
+        .header-right { text-align: right; font-size: 12px; opacity: 0.85; }
+        .header-right p { margin-bottom: 2px; }
+        .header-right strong { font-weight: 600; opacity: 1; }
+        .meta-bar { display: flex; justify-content: space-between; padding: 20px 40px; background: var(--gray-50); border-bottom: 1px solid var(--gray-200); }
+        .meta-block h4 { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-400); margin-bottom: 4px; font-weight: 600; }
+        .meta-block p { font-size: 13px; color: var(--gray-700); }
+        .meta-block .name { font-weight: 700; font-size: 14px; color: var(--dark); }
+        .summary-bar { display: flex; gap: 10px; padding: 20px 40px; border-bottom: 1px solid var(--gray-200); }
+        .stat { flex: 1; text-align: center; padding: 12px 8px; border-radius: 8px; border: 1px solid var(--gray-200); }
+        .stat .num { font-size: 22px; font-weight: 800; line-height: 1; margin-bottom: 2px; }
+        .stat .lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .stat.total { background: var(--gray-50); } .stat.total .num { color: var(--dark); }
+        .stat.crit { background: #fef2f2; border-color: #fecaca; } .stat.crit .num { color: var(--red); } .stat.crit .lbl { color: #b91c1c; }
+        .stat.high { background: #fffbeb; border-color: #fde68a; } .stat.high .num { color: var(--orange); } .stat.high .lbl { color: #b45309; }
+        .stat.med { background: #eff6ff; border-color: #bfdbfe; } .stat.med .num { color: #3b82f6; } .stat.med .lbl { color: #1d4ed8; }
+        .stat.low { background: #ecfdf5; border-color: #a7f3d0; } .stat.low .num { color: var(--green); } .stat.low .lbl { color: #047857; }
+        .section { padding: 20px 40px; }
+        .section h2 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--gray-200); }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+        thead th { background: var(--gray-100); padding: 7px 10px; text-align: left; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-600); font-weight: 700; }
+        tbody td { padding: 7px 10px; font-size: 11px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); vertical-align: top; }
+        tbody td:first-child { font-weight: 600; width: 28px; text-align: center; }
+        .tag { display: inline-block; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 6px; border-radius: 4px; }
+        .tag-crit { background: #fef2f2; color: #b91c1c; } .tag-high { background: #fffbeb; color: #b45309; }
+        .tag-med { background: #eff6ff; color: #1d4ed8; } .tag-low { background: #ecfdf5; color: #047857; }
+        .perf-table td:nth-child(2) { font-weight: 600; color: var(--red); }
+        .timeline { padding: 20px 40px; border-top: 1px solid var(--gray-200); }
+        .timeline h2 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+        .phase-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+        .phase { padding: 12px; border-radius: 8px; border: 1px solid var(--gray-200); text-align: center; }
+        .phase .ph { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-400); font-weight: 600; margin-bottom: 4px; }
+        .phase .title { font-size: 11px; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+        .phase .dur { font-size: 10px; color: var(--accent-dark); font-weight: 600; }
+        .footer { padding: 20px 40px; text-align: center; border-top: 1px solid var(--gray-200); background: var(--gray-50); }
+        .footer p { font-size: 11px; color: var(--gray-400); }
+        .footer .ty { font-size: 13px; font-weight: 600; color: var(--accent-dark); margin-bottom: 4px; }
+        .print-btn { display: block; max-width: 800px; margin: 20px auto; text-align: center; }
+        .print-btn button { background: linear-gradient(135deg, var(--primary), var(--accent-dark)); color: white; border: none; padding: 14px 40px; font-size: 15px; font-weight: 600; border-radius: 10px; cursor: pointer; font-family: inherit; transition: transform 0.2s, box-shadow 0.2s; }
+        .print-btn button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(15,24,96,0.3); }
+        @media print {
+            body { background: white; font-size: 10px; }
+            .page { box-shadow: none; margin: 0; border-radius: 0; max-width: none; }
+            .print-btn { display: none !important; }
+            .section { padding: 14px 30px; }
+            .header, .meta-bar, .summary-bar, .timeline, .footer { padding-left: 30px; padding-right: 30px; }
+            .page-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="header-left">
+                <h1>IMPLEMENTATION PLAN</h1>
+                <p>Website Frontend Bug Analysis & Fix Report</p>
+            </div>
+            <div class="header-right">
+                <p>Date: <strong>17 May 2026</strong></p>
+                <p>Total Issues: <strong>47</strong></p>
+                <p>Files Analyzed: <strong>48 HTML, 4 CSS, 2 JS, 140+ Assets</strong></p>
+            </div>
+        </div>
+
+        <div class="meta-bar">
+            <div class="meta-block">
+                <h4>Client</h4>
+                <p class="name">NAM Dehradun</p>
+                <p>Nimbus Academy of Management</p>
+                <p>NH-72, Jhajra, Chakrata Rd, Dehradun 248007</p>
+            </div>
+            <div class="meta-block" style="text-align: right;">
+                <h4>Developer</h4>
+                <p class="name">Arman Goswami</p>
+                <p>Frontend Developer & QA Specialist</p>
+                <p>UI/UX Designer</p>
+            </div>
+        </div>
+
+        <div class="summary-bar">
+            <div class="stat total"><div class="num">47</div><div class="lbl">Total Issues</div></div>
+            <div class="stat crit"><div class="num">8</div><div class="lbl">Critical</div></div>
+            <div class="stat high"><div class="num">14</div><div class="lbl">High</div></div>
+            <div class="stat med"><div class="num">16</div><div class="lbl">Medium</div></div>
+            <div class="stat low"><div class="num">9</div><div class="lbl">Low</div></div>
+        </div>
+
+        <!-- CRITICAL -->
+        <div class="section">
+            <h2>🔴 CRITICAL Issues (8)</h2>
+            <table>
+                <thead><tr><th>#</th><th>Page / File</th><th>Problem</th><th>Fix</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>index.html:20</td><td><strong>Broken Bootstrap CSS path</strong> – placeholder path never loads</td><td>Replace with correct local path or remove (line 31 already loads it)</td></tr>
+                    <tr><td>2</td><td>index.html:1957-1958</td><td><strong>Broken JS paths</strong> – popper.min.js & bootstrap.min.js are placeholders, throw 404</td><td>Remove both lines; Bootstrap Bundle already includes Popper</td></tr>
+                    <tr><td>3</td><td>index.html:1950,1956</td><td><strong>Duplicate Bootstrap JS</strong> – loaded TWICE (v5.0.0 and v5.0.0-beta1)</td><td>Remove the beta version</td></tr>
+                    <tr><td>4</td><td>index.html:1961</td><td><strong>Orphan &lt;/script&gt; tag</strong> – no matching open tag, causes parse errors</td><td>Remove the orphan tag</td></tr>
+                    <tr><td>5</td><td>index.html:1988-2001</td><td><strong>JS references non-existent elements</strong> – prev-btn, next-btn, item-list are inside commented-out HTML</td><td>Wrap in null-check guard or remove</td></tr>
+                    <tr><td>6</td><td>contact.html:6</td><td><strong>Template title exposed</strong> – "eLEARNING - eLearning HTML Template"</td><td>Change to "NAM Dehradun - Contact Us"</td></tr>
+                    <tr><td>7</td><td>contact.html:293</td><td><strong>Template placeholder text exposed</strong> – "Get a functional contact form… Download Now"</td><td>Replace with proper institution description or remove</td></tr>
+                    <tr><td>8</td><td>All pages</td><td><strong>Social media icons use absolute root paths</strong> – fail on non-root deployments</td><td>Change to relative paths ./img/assests/...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- HIGH -->
+        <div class="section">
+            <h2>🟠 HIGH Issues (14)</h2>
+            <table>
+                <thead><tr><th>#</th><th>Page / File</th><th>Problem</th><th>Fix</th></tr></thead>
+                <tbody>
+                    <tr><td>9</td><td>index.html:6</td><td><strong>Generic page title</strong> – just "Nimbus" with no keywords</td><td>Change to "Nimbus Academy of Management - Dehradun | NAM"</td></tr>
+                    <tr><td>10</td><td>index.html:8-9</td><td><strong>Empty SEO meta tags</strong> – keywords and description blank</td><td>Add relevant meta descriptions & keywords</td></tr>
+                    <tr><td>11</td><td>about.html:11, contact.html:12</td><td><strong>Broken favicon</strong> – references non-existent img/favicon.ico</td><td>Standardize to img/logologo-150x150.png</td></tr>
+                    <tr><td>12</td><td>index.html:647-649</td><td><strong>Empty &lt;button&gt; tag</strong> – invisible clickable element in navbar</td><td>Remove or give it purpose</td></tr>
+                    <tr><td>13</td><td>index.html:1076-1117</td><td><strong>About Us section breaks on mobile</strong> – no stacking, button hidden</td><td>Add responsive stacking, show button on all viewports</td></tr>
+                    <tr><td>14</td><td>index.html:1414-1416</td><td><strong>Events section uses hacky overflow</strong> – margin-left: -22%, width: 145%</td><td>Restructure with proper container and padding</td></tr>
+                    <tr><td>15</td><td>css/style.css:821</td><td><strong>CSS typo</strong> – "color: v r(--light)" – space breaks var()</td><td>Fix to color: var(--light) !important;</td></tr>
+                    <tr><td>16</td><td>index.html:730</td><td><strong>Video absolute path</strong> – 29.8MB unoptimized video fails on non-root deploy</td><td>Change to relative path and compress video</td></tr>
+                    <tr><td>17</td><td>Footer (all pages)</td><td><strong>All Quick Link hrefs empty</strong> – link to current page</td><td>Fill in correct URLs</td></tr>
+                    <tr><td>18</td><td>Footer (all pages)</td><td><strong>"FQAs" typo</strong> – should be "FAQs"</td><td>Fix across all pages</td></tr>
+                    <tr><td>19</td><td>about.html:73</td><td><strong>Broken link</strong> – vicechancellor.html doesn't exist</td><td>Remove link or create the page</td></tr>
+                    <tr><td>20</td><td>about.html:386,392</td><td><strong>Spelling errors</strong> – "stree"→"stress", "retify"→"rectify"</td><td>Fix all typos</td></tr>
+                    <tr><td>21</td><td>index.html:596,610,622</td><td><strong>Multiple nav items link to alumni.html</strong> incorrectly</td><td>Set appropriate hrefs</td></tr>
+                    <tr><td>22</td><td>about/contact footers</td><td><strong>"Designed By" visible inconsistently</strong> – shown on some pages only</td><td>Standardize across all pages</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- MEDIUM -->
+        <div class="section page-break">
+            <h2>🟡 MEDIUM Issues (16)</h2>
+            <table>
+                <thead><tr><th>#</th><th>Page / File</th><th>Problem</th><th>Fix</th></tr></thead>
+                <tbody>
+                    <tr><td>23</td><td>index.html:724-731</td><td><strong>Hero video fixed 700px height</strong> – crops awkwardly on mobile</td><td>Use responsive height with max-height and aspect ratio</td></tr>
+                    <tr><td>24</td><td>css/style.css:154-163</td><td><strong>Hero text positioning unpredictable</strong> – no top value</td><td>Add explicit top and use transform for centering</td></tr>
+                    <tr><td>25</td><td>index.html:37-342</td><td><strong>Massive inline style block</strong> – 300+ lines in HTML head</td><td>Extract to dedicated CSS file</td></tr>
+                    <tr><td>26</td><td>index.html:846-918</td><td><strong>Inline style block #2</strong> – 70+ lines for Academic Programmes</td><td>Move to external stylesheet</td></tr>
+                    <tr><td>27</td><td>index.html:1144-1175</td><td><strong>Inline style block #3</strong> – campus carousel styles</td><td>Move to external stylesheet</td></tr>
+                    <tr><td>28</td><td>index.html:1406-1530</td><td><strong>Inline style block #4</strong> – events section styles</td><td>Move to external stylesheet</td></tr>
+                    <tr><td>29</td><td>All pages</td><td><strong>Navbar NOT sticky</strong> – no position: sticky</td><td>Add sticky positioning with z-index</td></tr>
+                    <tr><td>30</td><td>css/style.css:60-63</td><td><strong>Duplicate .nav-links</strong> – conflicting flex-direction</td><td>Consolidate into one definition</td></tr>
+                    <tr><td>31</td><td>css/style.css:53-58</td><td><strong>Duplicate .nav-bar</strong> – conflicting layouts</td><td>Consolidate into one definition</td></tr>
+                    <tr><td>32</td><td>index.html:1078</td><td><strong>Image path with spaces</strong> – fragile on servers</td><td>Rename or URL-encode</td></tr>
+                    <tr><td>33</td><td>All images</td><td><strong>Massive unoptimized images</strong> – 8-14MB each</td><td>Compress all; convert to WebP</td></tr>
+                    <tr><td>34</td><td>index.html:1497</td><td><strong>Duplicate @keyframes</strong> – scroll-left defined twice</td><td>Remove duplicate</td></tr>
+                    <tr><td>35</td><td>css/style.css:1365</td><td><strong>CSS nesting syntax</strong> – unsupported in older browsers</td><td>Convert to standard CSS selectors</td></tr>
+                    <tr><td>36</td><td>about.html nav</td><td><strong>Missing arrow-right div</strong> in UG dropdown</td><td>Add the missing element</td></tr>
+                    <tr><td>37</td><td>Mobile navbar</td><td><strong>Toggle doesn't work</strong> – custom JS fights Bootstrap</td><td>Remove custom toggle; let Bootstrap handle it</td></tr>
+                    <tr><td>38</td><td>index.html:1716</td><td><strong>Extra &lt;/div&gt; closing tag</strong> – orphan tag</td><td>Remove the orphan tag</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- LOW -->
+        <div class="section">
+            <h2>🟢 LOW Issues (9)</h2>
+            <table>
+                <thead><tr><th>#</th><th>Page / File</th><th>Problem</th><th>Fix</th></tr></thead>
+                <tbody>
+                    <tr><td>39</td><td>index.html:1900</td><td><strong>"FQAs" typo</strong></td><td>Fix to "FAQs"</td></tr>
+                    <tr><td>40</td><td>index.html:706</td><td><strong>Mixed English/Hindi without lang attribute</strong></td><td>Wrap Hindi in &lt;span lang="hi"&gt;</td></tr>
+                    <tr><td>41</td><td>index.html:1384</td><td><strong>Inconsistent date format</strong> – "27july 2025" vs "10 July 2023"</td><td>Standardize formatting</td></tr>
+                    <tr><td>42</td><td>index.html:2029</td><td><strong>XSS vulnerability</strong> – chatbot appends unsanitized input</td><td>Sanitize input before DOM insertion</td></tr>
+                    <tr><td>43</td><td>index.html:681</td><td><strong>Phone input type="number"</strong> – allows scientific notation</td><td>Use type="tel" with pattern validation</td></tr>
+                    <tr><td>44</td><td>index.html:667</td><td><strong>API key exposed in HTML</strong></td><td>Move to server-side (low priority)</td></tr>
+                    <tr><td>45</td><td>css/style.css:979</td><td><strong>Invalid CSS color</strong> – rgba(256,256,256,.1)</td><td>Fix to rgba(255,255,255,.1)</td></tr>
+                    <tr><td>46</td><td>All pages</td><td><strong>No lazy loading</strong> on below-fold images</td><td>Add loading="lazy"</td></tr>
+                    <tr><td>47</td><td>All pages</td><td><strong>No alt text</strong> on many images</td><td>Add descriptive alt text</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Performance -->
+        <div class="section" style="border-top: 1px solid var(--gray-200);">
+            <h2>📊 Performance — Image Optimization</h2>
+            <table class="perf-table">
+                <thead><tr><th>File</th><th>Size</th><th>Issue</th></tr></thead>
+                <tbody>
+                    <tr><td>NIMBUS 176.jpg</td><td>23.9 MB</td><td>Needs compression to ~200KB</td></tr>
+                    <tr><td>chairman.jpg</td><td>21.9 MB</td><td>Must be resized and compressed</td></tr>
+                    <tr><td>P1121965.jpg</td><td>14.1 MB</td><td>Convert to WebP, resize</td></tr>
+                    <tr><td>DJI_*.webp files</td><td>7-14 MB each</td><td>Already WebP but uncompressed</td></tr>
+                    <tr><td>campusTour.mp4</td><td>29.8 MB</td><td>Compress to ~5MB or use CDN</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size: 12px; color: var(--accent-dark); font-weight: 600;">💡 Total estimated savings: ~200 MB → ~15 MB after optimization</p>
+        </div>
+
+        <!-- Responsive -->
+        <div class="section" style="border-top: 1px solid var(--gray-200);">
+            <h2>📱 Responsive Breakpoint Issues</h2>
+            <table>
+                <thead><tr><th>Breakpoint</th><th>Issues</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>≤ 480px</strong> (Mobile)</td><td>Hero text overlaps video; About section doesn't stack; Apply Now hidden; info boxes overflow</td></tr>
+                    <tr><td><strong>481–768px</strong> (Tablet)</td><td>Navbar collapse fighting Bootstrap; dropdowns fail on tap; info-box cards 380px fixed height</td></tr>
+                    <tr><td><strong>769–991px</strong> (Laptop)</td><td>Nav links overflow with nowrap; campus carousel 737px fixed clips</td></tr>
+                    <tr><td><strong>≥ 1200px</strong> (Desktop)</td><td>Events width: 145% causes horizontal scroll; minor alignment issues</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+            <h2>📋 Development Timeline</h2>
+            <div class="phase-grid">
+                <div class="phase"><div class="ph">Phase 1</div><div class="title">Critical Fixes</div><div class="dur">1 Day</div></div>
+                <div class="phase"><div class="ph">Phase 2</div><div class="title">Responsive</div><div class="dur">2 Days</div></div>
+                <div class="phase"><div class="ph">Phase 3</div><div class="title">Performance</div><div class="dur">1 Day</div></div>
+                <div class="phase"><div class="ph">Phase 4</div><div class="title">UI/UX Polish</div><div class="dur">2 Days</div></div>
+                <div class="phase"><div class="ph">Phase 5</div><div class="title">Testing & QA</div><div class="dur">1 Day</div></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="ty">NAM Website Frontend Audit & Optimization</p>
+            <p>47 issues identified → Comprehensive fix plan delivered → All work performed locally</p>
+            <p style="margin-top: 6px;">Prepared by Arman Goswami | 17 May 2026</p>
+        </div>
+    </div>
+
+    <div class="print-btn">
+        <button onclick="window.print()">📄 Save as PDF / Print Implementation Plan</button>
+    </div>
+</body>
+</html>

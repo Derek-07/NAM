@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nimbus</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <!-- Favicon -->
+    <link href="img/logologo-150x150.png" rel="icon">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* =============== CARD CONTAINER =============== */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+}
+
+/* =============== CARD BOX =============== */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.18);
+}
+
+/* =============== FIXED IMAGE SIZE =============== */
+.card img {
+    width: 100%;
+    height: 280px;                     /* 🔥 SAME HEIGHT FOR ALL IMAGES */
+    object-fit: cover;                 /* Perfect crop */
+    border-bottom: 1px solid #eee;
+}
+
+/* =============== CARD CONTENT =============== */
+.card-content {
+    padding: 18px 20px;
+}
+
+.card-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.card-content h6 {
+    font-size: 0.9em;
+    color: #007BFF;
+    margin: 0 0 10px;
+}
+
+/* Hidden detailed content (used in modal) */
+.card-more-content {
+    display: none;
+}
+
+/* =============== READ MORE BUTTON =============== */
+.read-more {
+    display: inline-block;
+    background: linear-gradient(135deg, #007BFF, #0056D2);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 12px;
+    font-size: 0.95em;
+    transition: background 0.3s ease;
+}
+
+.read-more:hover {
+    background: linear-gradient(135deg, #0056D2, #003C9E);
+}
+
+/* =============== MODAL (Reusable for all pages) =============== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-box {
+    background: #fff;
+    width: 80%;
+    max-width: 750px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 14px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+/* Modal Box */
+.modal-box {
+    background: #ffffff;
+    width: 70%;
+    max-width: 850px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+/* Close Button */
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #444;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+/* Modal Box */
+.modal-box {
+    background: #f2f2f2; /* Light silver */
+    width: 70%;
+    max-width: 850px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 35px 40px;
+    border-radius: 22px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+    position: relative;
+    font-family: "Poppins", sans-serif; /* Attractive modern font */
+}
+
+/* Modal Heading */
+.modal-box h2, 
+.modal-box h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+/* Modal Paragraph */
+.modal-box p, 
+.modal-box li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* List spacing */
+.modal-box ul {
+    padding-left: 18px;
+}
+
+/* Close Button */
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 26px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #555;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- old navbar -->
+    <!-- <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img src="img/nam-logo-new-1-1.png" alt="" style="width: 200px; height: 70px;">
+     <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>eLEARNING</h2>--
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="about.html" class="dropdown-item">About us</a>
+                        <a href="misson&vision.html" class="dropdown-item">Mission & Vision</a>
+                        <a href="chairmans's message.html" class="dropdown-item">Chairman's Message</a>
+                        <a href="Director'sMessage.html" class="dropdown-item">Director's Message</a>
+                        <a href="404.html" class="dropdown-item">Faculty</a>
+                        <a href="404.html" class="dropdown-item">Governing Council</a>
+                        <a href="404.html" class="dropdown-item">Advisiory Counsil</a>
+                        <a href="404.html" class="dropdown-item">Internal Committees</a>
+                    </div>
+                </div>
+
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admissions</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="404.html" class="dropdown-item">Eligiblity</a>
+                        <a href="404.html" class="dropdown-item">Admissions Process</a>
+                        <a href="404.html" class="dropdown-item">Fee Structure</a>
+                        <a href="404.html" class="dropdown-item">Payment</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Memberships</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="404.html" class="dropdown-item">PEARSON UG ENTRANCE EXAM</a>
+                        <a href="404.html" class="dropdown-item">ICT ACADEMY</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Courses</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="Mba.html" class="dropdown-item">MBA</a>
+                        <a href="BBA.html" class="dropdown-item">BBA</a>
+                        <a href="Bcom.html" class="dropdown-item">B.COM.</a>
+                        <a href="Bca.html" class="dropdown-item">BCA</a>
+                        <a href="Bed.html" class="dropdown-item">B.Ed.</a>
+                        <a href="BA.html" class="dropdown-item">BA</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">facilities</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="#" class="dropdown-item">Library</a>
+                        <a href="#" class="dropdown-item">Computer</a>
+                        <a href="#" class="dropdown-item">Sports</a>
+                        <a href="#" class="dropdown-item">Transport</a>
+                        <a href="#" class="dropdown-item">Cafeteria</a>
+                        <a href="#" class="dropdown-item">Smartclass</a>
+                        <a href="#" class="dropdown-item">Swayam</a>
+                        <a href="#" class="dropdown-item">Teacher Training Policy(AICTE) </a>
+                        <a href="#" class="dropdown-item">National Academic Depository</a>
+                        <a href="#" class="dropdown-item">Examination Reform Policy</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="alumni.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Alumni</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="404.html" class="dropdown-item">First ALumni Meet</a>
+                        <a href="404.html" class="dropdown-item">Second Alumni Meet</a>
+                        <a href="404.html" class="dropdown-item">Alumni Speak</a>
+                        
+                    </div>
+                </div>
+                <a href="placement.html" class="nav-item nav-link">Placements</a>
+                <a href="404.html" class="nav-item nav-link">Results</a>
+                <a href="Gallery.html" class="nav-item nav-link">Gallery</a>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="contact.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Apply Now<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav> -->
+
+    <!-- Navbar Start -->
+    <nav class="nav-bar  navbar-expand-lg navbar-light bg-light">
+
+
+        <div class="nav-one w-100" >
+            <div>
+                <img src="./img/assests/NIM.png" alt="Logo" style="width: 90%; height: auto;">
+
+
+            </div>
+
+
+            <div class="nav-right-images" style="padding: 17px;">
+                <!-- image 2 -->
+                <div class="nav-right-images">
+                    <img src="./img/assests/28_new.png" class="w-100" />
+                    <!-- <img class="right-image-2" src="./img/assests/iso.png" width="20%" height="60px" /> -->
+                </div>
+            </div>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- nav links -->
+
+
+
+        <div class="collapse navbar-collapse " id="navbarNavDropdown" style="width: 100%;">
+            <div class="nav-links" id="nav-link-container" style="width: 100%;margin-right: -15px;">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">About</a>
+                    <div class="dropdown-menu fade-down mt-0 " style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="about.html" class="dropdown-item">About us</a>
+                        <a href="misson&vision.html" class="dropdown-item">Mission & Vision</a>
+                        <a href="chairmans's message.html" class="dropdown-item">Chairman's Message</a>
+                        <a href="Director'sMessage.html" class="dropdown-item">Director's Message</a>
+                        <!-- <a href="404.html" class="dropdown-item">Vice Chancellors' Message</a> -->
+                        <a href="foundationHistory.html" class="dropdown-item">Foundation History</a>
+                        <a href="governingCouncil.html" class="dropdown-item">Governing Council</a>
+                        <!-- <a href="404.html" class="dropdown-item">Board Of Governors</a> -->
+                         <a href="ExtensionApproval.html" class="dropdown-item">Mandatory Disclosure</a>
+                        <!-- <a href="404.html" class="dropdown-item">Awards & Certificates</a> -->
+                        <a href="internalCell.html" class="dropdown-item">Internal Committee</a>
+                    </div>
+
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Academic Programs</a>
+                    <div class="dropdown-menu fade-down" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="#" class="dropdown-item nav-item ug-nav dropdown double-nav ">
+                            UG-
+                            <div class="arrow-right"></div>
+                            <div class="double-nav-links">
+                                <a href="BA.html" class="dropdown-item">
+                                    -BA
+                                </a>
+                                <a href="BBA.html" class="dropdown-item">
+                                    -BBA
+                                </a>
+                                <a href="Bcom.html" class="dropdown-item">
+                                    -B.Com
+                                </a>
+                                <a href="Bca.html" class="dropdown-item">
+                                    -BCA
+                                </a>
+                            </div>
+                        </a>
+                        <a href="Mba.html" class="dropdown-item">PG- MBA</a>
+                        <a href="Bed.html" class="dropdown-item">Nimbus School Of Education – B.Ed</a>
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Faculty & Research</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="faculty.html" class="dropdown-item">Faculty Members</a>
+                        <a href="faculty_bed.html" class="dropdown-item">Faculty B.Ed</a>
+                        <!-- <a href="404.html" class="dropdown-item">Visiting Faculty Members</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Research & Publications</a> -->
+                        <!-- <a href="internalCell.html" class="dropdown-item">Internal Cell</a> -->
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Resources</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="library.html" class="dropdown-item">Library</a>
+                        <a href="itinfrastructure.html" class="dropdown-item">IT Infrastructure</a>
+                        <a href="sports.html" class="dropdown-item">Sports</a>
+                        <a href="multipurposehall.html" class="dropdown-item">Auditorium</a>
+                        <a href="hostel.html" class="dropdown-item">Hostel</a>
+                        <a href="cafeteria.html" class="dropdown-item">Cafeteria</a>
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="" class="nav-link " data-bs-toggle="dropdown">Corporate Placement</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="placementCommittee.html" class="dropdown-item">Placement Committee</a>
+                        <a href="placementReport.html" class="dropdown-item">Placement Reports</a>
+                        <a href="recruitmentActivities.html" class="dropdown-item">Recruitment Activities</a>
+                        <!-- <a href="#" class="dropdown-item">Summer Internships</a> -->
+                        <!-- <a href="#" class="dropdown-item">Our Recruiters</a> -->
+                        <a href="FAQ.html" class="dropdown-item">Recruitment FAQ</a>
+                        <a href="careerEnhancement.html" class="dropdown-item">Career Enhancement Initiatives</a>
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Admission</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="admissionPage.html" class="dropdown-item">Overview</a>
+                        <a href="adminssionCriteria.html" class="dropdown-item">Admission Criteria</a>
+                        <a href="coursefee.html" class="dropdown-item">Course Fee</a>
+                        <!-- <a href="404.html" class="dropdown-item">How To Apply</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Visit The Campus</a> -->
+                        <a href="registration.html" class="dropdown-item">Registration</a>
+                        <!-- <a href="courses/index_courses.html" class="dropdown-item">cour</a> -->
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Alumni</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <!-- <a href="404.html" class="dropdown-item">Alumni Testimonials</a> -->
+                        <a href="alumni_details.html" class="dropdown-item">Alumni Details</a>
+                         <!-- <a href="404.html" class="dropdown-item">Alumni Profile</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Albums</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Contact Us</a> -->
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Campus Life</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <!-- <a href="404.html" class="dropdown-item">News Room</a> -->
+                        <a href="Photos.html" class="dropdown-item">Photo Gallery</a>
+                        <!-- <a href="404.html" class="dropdown-item">Event Calander</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">AICTE EoA</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Scholarship</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Art & Culture</a> -->
+                    </div>
+                </div>
+                <!-- <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Registration</a>
+                </div> -->
+                <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="" class="nav-link " data-bs-toggle="dropdown">Student Corner</a>
+                        <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <a href="Downloads.html" class="dropdown-item">Downloads Forms</a>
+                            <a href="Results.html" class="dropdown-item">Results</a>   
+                              </div>
+                    </div>
+                    
+                    <a id="apply-btn" href="#" class="btn btn-primary py-2 px-lg-2 d-none d-lg-block"
+                    style="background-color: #1FCAC5; color: white; font-weight: 500; ">Apply Now</a>
+            </div>
+            
+        </div>
+
+</div>
+</nav>
+    <!-- Navbar End -->
+
+     <!-- popup form -->
+     <div class="popup-overlay" id="popupOverlay">
+
+        <div class="popup" id="popup">
+    
+            <span class="close" id="closePopup">&times;</span>
+    
+            <div class="popup-content">
+    
+                <p>Enquiry Now !</p>
+
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="276a43fb-d0b6-47c1-952c-659bd1ee67cd">
+                    <input class="inputForm m-3" name="Name" type="text" placeholder="Enter Name" id="name">
+                    <input class="inputForm m-3" name="Email" type="email" placeholder="Enter Email" id="email">
+                    <!-- <label for="course">Choose courses:</label> -->
+                    <input class="inputForm m-3" name="Courses" type="text" placeholder="Enter Course" id="course" list="courses">
+                    <datalist id="courses">
+                        <option value="BA">
+                        <option value="BBA">
+                        <option value="MBA">
+                        <option value="B.com">
+                        <option value="Bca">
+                        <option value="B.Ed">
+                    </datalist>
+                    <input class="inputForm m-3" name="Phone_number" type="number" placeholder="Enter Phone" id="phone">
+                    <button onclick="submitForm()">Submit</button>
+    
+                </form>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+
+
+    <!-- Carousel Start -->
+
+
+    </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- new boxes -->
+
+
+    <!-- courses -->
+    <h1 style="text-align: center;">Faculty B.Ed</h1>
+    <div class="card-container">
+        <div class="card">
+            <img src="img/bedfac/DR Mukesh.jpg" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Dr. Mukesh Kumar </h2>
+                <h6>Principal </h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <!-- <h4>Area</h4>
+                    <ul>
+                        <li>Primary Area: Contemporary India & Education, Teacher Education & School Internship.  </li>
+                        <li>Secondary Area: Environmental Education, Sociological Foundation of Education.</li>
+                    </ul> -->
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : mukeshkumar2276@gmail.com
+                        </li>
+                        <li>
+                            Phone : +91-9528186584
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>
+                            Ph.D. in Education (2011) from C.C.S University Meerut.
+                        </li>
+                        <li>
+                            M.Ed. in 2005 from Rajasthan University Jaipur Raj.
+                        </li>
+                       <li>M.A in Sanskrit (2014) from C.C.S University Meerut.</li>
+                       <li>B.Ed. in 2003 from C.C.S University Meerut.</li>
+                       <li>B.A.in 2000 from C.C.S University Meerut.</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Teaching of Sanskrit</li>
+                        <!-- <li>Learning and Teaching.</li>
+                        <li>Pedagogy of Biological Science</li>
+                        <li>Environmental Education.</li>
+                        <li>Sociological Foundation of Education.</li>
+                        <li>Teacher Education.</li> -->
+                    </ul>
+
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>15 years’ teaching experience in B.Ed. college</li>
+                        <!-- <li>Faculty Member, H.N.B. Garhwal University (A Central University) S.R.T. Campus, Badshahithaul Tehri Garhwal from 01 October 2018 to 31 January 2024.</li> -->
+                    </ul>
+                    <h4>Professional Experience:</h4>
+                    <ul>
+                   <li>Nimbus School of Education</li>
+                   <li>Nimbus Academy of management</li>
+                    </ul>
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+
+      
+        <div class="card">
+            <img src="img/bedfac/DR DEEWAN SINGH RANA.jpg" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Dr. Deewan Singh Rana </h2>
+                <h6>Head & Assistant Professor </h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>Primary Area: Contemporary India & Education, Teacher Education & School Internship.  </li>
+                        <li>Secondary Area: Environmental Education, Sociological Foundation of Education.</li>
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : rana.deewan2015@gmail.com
+                        </li>
+                        <li>
+                            Phone : +919557515748
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>
+                            Ph.D. in Education (Doctorate Degree), M.Ed. (Master in Education).
+                        </li>
+                        <li>
+                            M.Sc. (Master in Botany), Hemvati Nandan Bahuguna Garhwal University (A Central University) Srinagar Garhwal, Uttarakhand
+                        </li>
+                       
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Contemporary India & Education</li>
+                        <li>Learning and Teaching.</li>
+                        <li>Pedagogy of Biological Science</li>
+                        <li>Environmental Education.</li>
+                        <li>Sociological Foundation of Education.</li>
+                        <li>Teacher Education.</li>
+                    </ul>
+
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>Faculty Member, Govt. Degree College Naini Danda, Patotiya, Pauri Garhwal from 09 April 2013 to 04 January 2014.</li>
+                        <li>Faculty Member, H.N.B. Garhwal University (A Central University) S.R.T. Campus, Badshahithaul Tehri Garhwal from 01 October 2018 to 31 January 2024.</li>
+                    </ul>
+                    <h4>Academic Conferences and FDPs</h4>
+                    1.	Participated in a National Workshop on “Applied Statistical Method and Data Analysis with SPPS 22” from 31st July to 1st August 2014 Organized by Deptt. Of Business Management, H.N.B. Garhwal Central University Srinagar Garhwal.<br/>
+                    2.	Participated in a 3 days Workshop on “National Curriculum Framework for Teacher Education” from 8th to 10th Dec. 2014 Organized by Deptt. Of Education, H.N.B. Garhwal Central University Srinagar Garhwal.<br/>
+                    3.	Presented a Paper “Quality Assurance in Higher Education” in the Seminar theme “Best Practices in Achieving Institutional Excellence in Higher Education” Organized by Deptt. Of Education, H.N.B. Garhwal Central University Srinagar Garhwal from 2nd March to 3rd March 2016.<br/>
+                    4.	Presented a Paper “Development: A Human rights ” in the International Seminar on “The Himalayan Challenge Towards Interdisciplinary Dialogues for Sustainability and Development” Organized by Sri Dev Suman Vishwavidyala Uttarakhand, Badshahithaul, Tehri Garhwal from 29th Nov. to 1st Dec. 2017.<br/>
+                    5.	Participated in a National Workshop on “Data Analysis Using EXCEL and SPPS (CPSTE)” Organized by Deptt. Of Education, Hari Singh Gaur Vishwavidyala, Sagar (M.P.) A Central University sponsored by M.H.R.D. Govt. of India Under the Scheme of PMMMNMT from 26 Dec. to 1st January 2018.<br/>
+                    6.	Presented   a   Paper “ स्नातक स्तर पर अध्ययनरत विद्यार्थियों में मानवाधिकार के प्रति जागरूकता का अध्ययन” in a national Seminar on “Teacher education emerging issues, trends and diagnosis” Organized by Uttaranchal College Of Education Sewlakhalan Dehradun Uttarakhand in collaboration with council for teacher education (NSTE 2018) held on April 24, 2018.<br/>
+                    7.	Actively Participated in the webinar on Specific Learning             Disabilities (SLD): An overview Organized by Department of Educational Psychology, Tamilnadu Teacher Education University Chennai held on 29th May 2020.<br/>
+                    8.	 Participated in a International Virtual Conference on People, Environment, Science   &   Pandemic : “वसुधैव कुटुंबकम” Organized   by   Department   of Environmental Science of Bhagni Nivedita College, University of Delhi from June 5-7, 2020.<br/>
+                    9.	Participated in a Online 5 Days National Workshop on Research Methodology Organized by Faculty of Education, Indira Gandhi National Tribal University, Amarkantak (M.P.) from May 26-30, 2020.<br/>
+                    10.	Participated in the One Day Webinar on “Reorienting Academic Leadership, Pedagogy and Research in the Time of Crisis ” Organized by Department of Education, Tezpur University, Napaam, Tezpur, Assam  May 30, 2020.<br/>
+                    11.	Actively Participated in a National Webinar on “महामारी की समय में मानव अधिकार की चुनौती भारतीय संदर्भ में” 0rganized by Pracheta  (Pragya  Pravah) Kanpur From June 10, 2020.<br/>
+                    12.	Participated in a International Webinar on “Impact of COVID-19 on Research and Academic Activities” Organized by Department of Physics H.N.B. Garhwal Central University, S.R.T. Campus, Badshahithaul Tehri Garhwal from June 19-20, 2020.<br/>
+                    13.	 Participated in a 3 Days Online Panel Discussion Series on NEP-2020 Organized by Teacher Educators-SS from August 9-11, 2020.<br/>
+                    14.	Active Participation in a One Week workshop Programm on Annual Status of Education (ASER-2023) Organized by Department of Education H.N.B. Garhwal Central University, S.R.T. Campus, Badshahithaul Tehri Garhwal from September 11-16,2023.
+
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <div>
+                <img src="img/bedfac/ABHINAWA.jpg" alt="Image 1">
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Abhinawa Pokhriyal</h2>
+                <h6>Assistant professor</h6>
+                <!-- <p class="card-description">This is a description of the first card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Primary Area : Education
+                        </li>
+                        <li>
+                            Secondary Area : Humanities
+                        </li>
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : abhipokhriyal1983@gmail.com
+                        </li>
+                        <li>
+                            Phone : 8979118700
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>
+                            Fellow Program in Political Science (Doctoral Degree), Glocal University
+                        </li>
+                        <li>
+                            Master of Education, SDBIT Dehradun (HNBGU)
+                        </li>
+                        <li> Bachelor of Education, DITE (HNBGU)</li>
+                        <li>Master of Art, Bachelor of Art</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>History </li>
+                        <li>ECCE</li>
+                        <li>Inclusive Education</li>
+                        <li>Knowledge and Curriculum</li>
+                    </ul>
+                    <h4>Research Area</h4>
+                    <ul>
+                        <li>ICT </li>
+                        <li>Indian History </li>
+                        <li>Indian Polity</li>
+                        <li>Indian Philosophy </li>
+                    </ul>
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>Faculty Member, S.B College of Teacher Education Vikasnagar, Dehradun, April 2012 to October
+                            2016.</li>
+                        <li>Faculty Member ,Kukreja Institute of Teacher Education, Dehradun February 2020 to May 2023.
+                        </li>
+                        <li>Faculty Member ,Nimbus School of Education, July 2023 onwards</li>
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li>Nimbus School of Education</li>
+                        <li>S.B College of Teacher Education </li>
+                        <li>Kukreja Institute of Teacher Education</li>
+                    </ul>
+                    <h4>Academic Conferences</h4>
+                    <ul>
+                        <li>Yoga for Holistic Health, Success ,Peace and Introduction to inner Engineering conducted by
+                            Isha Foundation Volunteers at Bombay Teachers’ Training College.</li>
+                        <li>Covid-19 : Impact on Food Security and Livelihood through Migration Lens organized by
+                            Jhunjhunwala P.G. College Ayodhya </li>
+                        <li>Building Economy and Business Resillence Agility and Sustainability in the Past COVID-19 Era
+                            Conducted by Globsyn Business School. </li>
+                        <li>Combining Creative Thinking with Technology Essential for the VUCA World We Now Live in
+                            Conducted by ADMAA Series AMITY UNIVERSITY.</li>
+                    </ul>
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+     
+        
+      
+        <div class="card">
+            <img src="img/bedfac/NEELAM.jpg" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">NEELAM RAWAT</h2>
+                <h6>Assistant professor </h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Teaching and learning
+                        </li>
+                    </ul>
+                    <!-- <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : jarora266@gmail.com
+                        </li>
+                        <li>
+                            Phone : +91-8193916723
+                        </li>
+                    </ul> -->
+                    <h4>Education</h4>
+                    <ul>
+                        <li>Pursuing Ph.D in Education</li>
+                        <li>M.A. Economics from Maharaja Agrasen Himalayan Garhwal University (2022)</li>
+                        <li>M.Ed  from H.N.B.G.U Bidla Campus (2017).</li>
+                        <li>M.Com from S.D.S.U.V (2017)</li>
+                        <li>B.Ed from H.N.B.G.U (2015),( CTET QUALIFIED)</li>
+                        <li>B.Com from H.N.B.G.U (2014)</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Childhood and growing up</li>
+                        <li>Teaching and learning</li>
+                    </ul>
+                    <h4>Research Area</h4>
+                    <ul>
+                        <li>Guidance and counselling </li>
+                        <li>Remote teaching and learning</li>
+                            <li>Intellectual wellbeing</li>
+                            <li>NEP 2020</li>
+                    </ul>
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>4 year teaching experience in B.Ed. College as an assistant professor</li>
+                        <li>2 year teaching experience as a PGT</li>
+
+                    </ul>
+                    <h4>Selected publications</h4>
+                    <ul>
+                        <li>Rawat, Neelam. (2024). Intellectual wellbeing. In Nitin Bajpai & Abhishek Sengar (Eds), Education for Wellbeing. (pp. 50-57). Blueroseone.</li>
+                        <li>Research paper published in IJARESM with topic “A Comparative Study on the Parents Opinion on Remote Learning of Their Wards Studying in Government and Non-Government Secondary Schools during COVID-19 Lockdown.”</li>
+                        <li>Research paper published in Journal of Positive School Psychology with topic “A study on the Effect of COVID-19 towards the perception of Government Inter College Teachers in Dehradun District.”</li>
+                    </ul>
+                
+                <h4>Academic Conferences</h4>
+                    <ul>
+                        <li>Presentation of a paper on a “National Seminar” with topic “A study on the need of Guidance & Counselling at the secondary level of students.”</li>
+                        <li>Presentation of a paper on a “National Seminar” with topic “COVID-19 and school administration: the roles responsibilities and challenges.</li>
+                        <li>Presentation of a paper on a “National Seminar” with topic “COVID -19 and education: its consequences and opportunities.</li>
+                    </ul>
+                    <!-- <h4>Awards & Honors</h4>
+                    <ul>
+                        <li>In 2017, I proudly earned the silver medal in Master of Science (Mathematics) </li>
+                        <li>Qualifies for CSIR-NET (Mathematics)for lectureship.</li>
+                    </ul> -->
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/bedfac/NUPOOR BHANDARI.jpg" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Nupoor Bhandari</h2>
+                <h6>Assistant professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Primary area : Education
+                        <li>
+                            Secondary Area : Accounting, Finance, Auditing
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : Nupoorbhandari27@gmail.com
+                        </li>
+                        <li>
+                            Phone : +91-9997477910
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>Fellow Program in Education (Doctoral Degree), Himgiri Zee University
+                        </li>
+                        <li>Qualify NTA-NET in Education</li>
+                        <li>Qualify CTET 1 & CTET 2</li>
+                        <li>Master of Education, Birla campus Srinagar (HNBGU)</li>
+                        <li>Bachelor of Education, Army Institute of Education (GGSIPU)</li>
+                        <li>Master of Commerce, Bachelor of Commerce </li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Education</li>
+                        <li>Finance </li>
+                        <li>Guidance and counselling</li>
+                        <li>Management Accounting</li>
+                        <li>Corporate Accounting</li>
+                    </ul>
+                    <h4>Research Area</h4>
+                    <ul>
+                        <li>Sustainable development and vocational education</li>
+                        <li>Information Communication Technology for Education</li>
+                            <li>Guidance needs of students in the Indian context</li>
+                            <li>Green skills and vocational education</li>
+                            <li>Various psychological aspects</li>
+                    </ul>
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>Faculty Member, Nav Chetna College, Dehradun, January 2021 onwards
+                        </li>
+                        <li>Faculty Member, Nimbus School of Education, September 2022 onwards</li>
+
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li> Nimbus School of Education</li>
+                        <li>Nimbus Academy of Management</li>
+                    </ul>
+                
+                <h4>Selected Publications</h4>
+                    <ul>
+                        <li>Research Paper entitled “The Inquiry of Vocational Education: In the Legacies of Dewey, Tagore, Gandhi” Published in the International Journal of Analytical and Experimental Model Analysis (IJAEMA) February 2023. (PP: 55-68) ISSN NO:0886-9367</li>
+                        <li>Research Paper entitled “Green Skill Awareness and its Importance in Vocational Education: The Indian Scenario” Published in the book Green Solutions: A Handbook for Sustainable Business Strategies February 2024. (PP: 235-243) ISBN: 978-81-971276-6-3</li>
+                        <li>Research paper entitled, “The Global 2030 Agenda: Vocational Education and Sustainable Development Goals in the Indian Context” in Intersectionality in Education: Promoting Equity Inclusivity and Sustainability ISBN: 978-91-989240-1-5 </li>
+                    </ul>
+                    <h4>Academic Conferences</h4>
+                    <ul>
+                        <li>Research paper presentation in National seminar organized by SGRR in September 2023 entitled “Guidance need of adolescent students studying in government and private secondary school”.</li>
+                        <li>Research paper presentation in a Virtual first international conference organized by CTPD- DELHI in October 2023 entitled, “The Global 2030 agenda: Vocational Education and Sustainable Development Goals in the Indian context”.</li>
+                        <li>Research paper presentation at a national conference organized by Lakshmi Devi Tamta Women Education Center, Soban Singh Jeena University, Almora on the topic of changing dimensions of women's world in December 2023 paper entitled “Empowering women for the stronger economy through skill development and vocational education”</li>
+                    </ul>
+                    <h4>FDP attended</h4>
+                    <ul>
+                        <li>Participation in a five-day national virtual faculty development program on AI in education and business organized by the Department of Business Administration, Hindustan College of Arts and Science in January 2024</li>
+                        <li>Participation in a one-week National level virtual faculty development program on Use of Artificial Intelligence in Education 4.0 organized by Career Development Cell (CDC), Gokul Global University, Siddhpur, Gujarat from 8 to 14 January 2024</li>
+                   
+                    </ul>
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img/bedfac/SEEMA PANDEY.jpg" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Seema Pandey Vashishta</h2>
+                <h6>Assistant professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Primary area : EDUCATION 
+                        <li>
+                            Secondary Area :  ENGLISH LITERATURE
+                            POLTICAL SCIENCE
+                     
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email :pandeysimi221@gmail.com
+                        </li>
+                        <li>
+                            Phone : +91-7895028787
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>Pursuing Ph.D. in Education from S.G.R.R. UNIVERSITY Dehradun.</li>
+                        <li>M.Ed. from H.N.B.G University (2018).</li>
+                        <li>M.A English from H.N.B.G University (2014)</li>
+                        <li>M.A Political Science from Swami Vivekananda university (2020).</li>
+                        <li>B.Ed. from H.N.B.G. University. (2013)</li>
+                        <li>B.A(English, Political Science, Geography) from H.N.B.G University. (2011)</li>
+                        <li>Qualified – UTET 1ST and 2nd (2013) and UTET 2nd (2014) & CTET 2nd (2018)</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Knowledge and curriculum.</li>
+                        <li>Gender school and society. </li>
+                        <li>English Literature.</li>
+                    </ul>
+                    <h4>Research Area</h4>
+                    <ul>
+                        <li>Stress, Confidence and Social Maturity.</li>
+                        <li>Indian Educational Policies.</li>
+                    </ul>
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>4 years’ teaching experience in B.Ed. college (Nimbus school of education) as an     Assistant professor.</li>
+
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li> Nimbus School of Education</li>
+                        <li>Nimbus Academy of Management</li>
+                    </ul>
+                
+                <h4>Selected Publications</h4>
+                    <ul>
+                        <li>Research paper published in journal of positive school of psychology on the topic “A study of the confidence of higher secondary level students with respect to their social evolving”. (2022)</li>
+                    </ul>
+                    <h4>Academic Conferences</h4>
+                    <ul>
+                        <li>Attended National Conference on Significance of Yoga Education for Development of Teaching and Teacher education.</li>
+                        <li>Presented a research paper on Social Support and Persistency to Stress in International Conference on Multidisciplinary Research & Development.</li>
+                        <li>Presented a research paper on stress in adolescence and value education in national seminar. </li>
+                        <li>Attended ICSSR Sponsored National Seminar on New Education Policy 2019 and its Impact on Disability Studies.</li>
+                    </ul>
+                   
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img/bedfac/Mrs VijaySeema.jpg" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Vijay Seema</h2>
+                <h6>Assistant Professor of Sociology</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Primary area : Sociology 
+                        <li>
+                            Secondary Area : NA
+                     
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : vijay17seema@gmail.com
+                        </li>
+                        <li>
+                            Phone : +91-8923777487
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>UGC NET in Sociology</li>
+                        <li>M.A (Sociology) from DAV PG College Dehradun</li>
+                        <li>B.Ed. from Sri dev Suman University</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Sociology</li>
+                        <li>Environmental Science</li>
+                        <li>General Knowledge</li>
+                        
+                    </ul>
+                    <h4>Research Area</h4>
+                    <ul>
+                        <li>Impact of Covid -19 on elder peoples</li>
+                      
+                    </ul>
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>As an Asst.Prof of Sociology from 2018 in Nimbus Academy of Management, Dehradun</li>
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li> 6 Years</li>
+                    </ul>
+                
+                <h4>Selected Publications</h4>
+                    <ul>
+                        <li>Research paper published in journal of positive school of psychology on the topic “A study of the confidence of higher secondary level students with respect to their social evolving”. (2022)</li>
+                    </ul>
+                    <h4>Conference & Seminar:</h4>
+                    <ul>
+                        <li>Participated National Webinar on “Guidance for writing an Effective Research Paper” in 2023,
+                            organized by IQAC Cell, Nimbus Academy of Management Dehradun, Uttarakhand.</li>
+                        <li>Participated one week National Webinar on “Digital Teaching Techniques” in 2021, organized by ICT
+                            Academy.</li>
+                        <li>Building Economy and Business Resillence Agility and Sustainability in the Past COVID-19 Era
+                            Conducted by Globsyn Business School.</li>
+                        <li>I have presented seminar on “Sociologist - Karl Marks views” that delivered to tthe faculty and
+                            Students of DAV PG College, Dehradun.</li>
+                    </ul>
+                    <h4>Selected Publications</h4>
+                    <ul>
+                        <li>Research paper published in journal of positive school of psychology on the topic “A study of the confidence of higher secondary level students with respect to their social evolving”. (2022)</li>
+                    </ul>
+                    <h4>Awards:</h4>
+                    <ul>
+                        <li>Best Teacher Award in 2024 in Nimbus Academy of Management.</li>
+                       
+                    </ul>
+                   
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- Dahnveer -->
+        <!-- <div class="card">
+            <img src="img/bedfac/DhanveerSaini.jpg" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Dahnveer Saini</h2>
+                <h6>Assistant Professor of Education</h6> -->
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <!-- <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        
+                            <li>Primary area : Education</li>
+                            <li>Secondary Area: Humanities</li>
+                        
+                     
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email: sainiveer272@gmail.com
+                        </li>
+                        <li>
+                            Phone : +91-9997681871
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>M.Ed from SDBIT College, Dehradun (2015)</li>
+                        <li>M.A Hindi from Uttarakhand Open University (2013)</li>
+                        <li> B.Ed from HNB University (2010)</li>
+                            <li>B.A (Hindi, English, Economics) from DAV (PG) College, Dehradun (2007)</li>
+                                <li> B.A Sanskrit (Single Subject) from Uttarakhand Open University</li>
+                                    <li> B.A Political Science (Single Subject) from Uttarakhand Open University</li>
+                                        <li> UTET - 1st & 2nd Qualified (2013)</li>
+                           
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Hindi Literature </li>
+                        <li> Vedic Studies</li>
+                        <li>Ramcharitmanas</li>
+                        
+                    
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>Faculty Member, Nimbus Academy of Management (From September 2024 Onwards)</li>
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li> Nimbus Academy of Management
+                        </li>
+                    </ul>
+                
+                   
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div> -->
+
+          <div class="card">
+        <img src="img/faculty/gaurav.jpg" alt="Image 8">
+        <div class="card-content">
+            <h2 class="card-title">Gaurav Chauhan </h2>
+            <h6>Assistant professor</h6>
+            <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+            <div class="card-more-content">
+                <h4>Area</h4>
+                <ul>
+                     <li>
+                        Political Science
+
+
+                     </li>
+                     <li>
+                        Inclusive Education
+
+                     </li>
+                     
+                </ul>
+                <h4>Contact</h4>
+                <ul>
+                     
+                     <li>
+                         Phone : 8077110577
+
+                     </li>
+                </ul>
+                <h4>Education</h4>
+                <ul>
+                     <li> B.Ed.
+
+                    
+                        <li>
+                         Graduation: 2014-2017  BA </li>
+
+                         <li>
+                         Post Graduation : 2017-2019 MA Education   
+                         </li>
+                         <li>
+                         Post Graduation: 2019-2021 MA Political Science
+                         </li>
+                         <li>
+                         NET in Education 2020  
+                         </li>
+                         <li>
+                         B.Ed 2023-2025
+                         </li>
+
+
+
+                     
+                        
+
+
+                     </li>
+                     
+                     
+                     
+                </ul>
+                <h4>Teaching</h4>
+                <ul> <li>B.Ed</li>
+                     <li>Political Science</li>
+                 
+                        
+                 
+                        
+</ul>
+               
+              
+                        <h4>Professional Experience
+                        </h4>
+                        <ul>
+                     <li> Nimbus School Of Education</li>
+                          </ul>
+                
+             </div>
+             <button class="read-more" onclick="toggleContent(this)">Read More</button>
+        </div>
+    </div>
+
+
+        <div class="card">
+            <img src="img/bedfac/default_img.png" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Mrs. Saroj</h2>
+                <h6>Assistant Professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Primary Area : Education 
+                        <li>
+                            Secondary Area : English
+                     
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : sarojkhanna86@gmail.com
+                        </li>
+                        <li>
+                            Phone : +91-7895249620
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>M.Ed. from H.N.B. Garhwal University.</li>
+                        <li>B.Ed. from H.N.B. Garhwal University.</li>
+                        <li>Post Graduate (M.A. English), Sri dev Suman University.</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Education</li>
+                        <li>English</li>
+                        
+                    </ul>
+                    
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>Teacher, Blooming Public school may 2015 onwards</li>
+                        <li>Teacher, Room to read, May 2018, onwards</li>
+                        <li>Faculty Member, Uttaranchal college of Education, January 2022, onwards</li>
+                        <li>Faculty Member, Nimbus School of Education, onwards</li>
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li>Nimbus School of Education</li>
+                        <li>Nimbus Academy of Management</li>
+                    </ul>
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/bedfac/default_img.png" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Ajay Chauhan</h2>
+                <h6>Assistant Professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Primary Area : Education 
+                        <li>
+                            Secondary Area : Science
+                     
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : kchauhan.k80@gmail.com
+                        </li>
+                        <li>
+                            Phone : +91-9759370398, 8273202121
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>M.Ed. from Jivaji University, Gwalior (M.P.)</li>
+                        <li>B.Ed. from C.C.S. University, Meerut.</li>
+                        <li>Post Graduate Diploma in Personal Management &amp; Labour Welfare from
+                            Kurukshetra University.</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Education</li>
+                        <li>Life Science</li>
+                        <li>Biology</li>
+                        <li>Zoology</li>
+
+                    </ul>
+                    
+                    <h4>Academic Experience</h4>
+                    <ul>
+                        <li>Faculty Member, William Jefferson Cliton Science Technology, Rampur,
+                            Maniharan, July 2005 onwards</li>
+                        <li>Faculty Member, Shivalik College of Education, May 2008, onwards</li>
+                        <li>Faculty Member, Krishna Institute of Education and Management, Saharanpur,
+                            June 2012, onwards</li>
+                        <li>Faculty Member, Nimbus School of Education, onwards</li>
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li>Nimbus School of Education</li>
+                        <li>Nimbus Academy of Management</li>
+                    </ul>
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/bedfac/default_img.png" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">SANDEEP KUMAR</h2>
+                <h6>Assistant Professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Primary Area : Mathematics 
+                        <li>
+                            Secondary Area : Education
+                     
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : sandch206@gmail.com
+                        </li>
+                        <li>
+                            Phone : +91-8273202121
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>M.Sc (Mathematics) from CCS University Meerut in2001.</li>
+                        <li>M.A (Education) from CCS University Meerut in 2010</li>
+                        <li>M.Sc (Mathematics) from MD University Rohtak</li>
+                        <li>B.Sc (PCM) from CCS University Meerut in1997</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Physics, Chemistry, Math’s.</li>
+
+                    </ul>
+                    
+                    <h4>Research Area</h4>
+                    <ul>
+                        <li>Mathematics</li>
+                        <li>Management</li>
+                        
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li>Ten years of Teaching Experience</li>
+                    </ul>
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/bedfac/default_img.png" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Amita Malhotra</h2>
+                <h6>Assistant Professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Primary Area : Vocal Music 
+                        <li>
+                            Secondary Area : Hindi, English
+                     
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : sandch206@gmail.com
+                        </li>
+                        <li>
+                            Phone : 9760268215,8192840239
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>M.Phil in Vocal Music ,Kurukshetra University .</li>
+                        <li>Master of Arts , Vocal Music ,Kurukshetra University</li>
+                        <li>BA, (Hindi,English,Sanskrit,Music ) ,Kurukshetra University.</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Vocal Music</li>
+                        <li>Hindi,English,Sanskrit</li>
+                    </ul>
+                    
+                    <h4>Research Area</h4>
+                    <ul>
+                        <li>Music</li>
+                        <li>Hindi ,English</li>
+                        
+                    </ul>
+                    <h4>Academic Experience</h4>
+                    <ul>
+                       <li>Faculty Member , Gurunanak Khalsa College Yamuna Nagar ,
+                        From (1995 TO 1997).</li>
+                       <li>Faculty Member, Maharshi Vidya Mandir School ,Yamuna Nagar ,
+                        From (1998 To 1999).</li>
+                       <li>Faculty Member ,M.L.N School ,Yamuna Nagar From (1999 To 2001).</li>
+                       <li>Faculty Member, Happy Public School ,Bilaspur Yamuna Nagar Haryana From
+                        (2006 To 2009).</li>
+                       <li>Faculty Member SM.JN (P.G) College Haryana From( 2012 To 2014).</li>
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li>Vocal Music</li>
+                        <li>Hindi ,English ,Sanskrit</li>
+                    </ul>
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/bedfac/default_img.png" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">PRIYA NEHRA</h2>
+                <h6>Assistant Professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                        <li>
+                            Primary Area : Pedagogy of Commerce
+                        <li>
+                            Secondary Area : Economics
+                     
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            Email : Nehrapriya826@gmail.com
+                        </li>
+                        <li>
+                            Phone : 9354231307, 9410063236
+                        </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                        <li>M.ED from SRM University in 2014.</li>
+                        <li>B.Ed from SRM University in 2013.</li>
+                        <li>M.Com from CCS University in 2016.</li>
+                        <li>B.com from CCS University in 2012.</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                        <li>Management Accounting</li>
+                        <li>Financial Accounting</li>
+                        <li>Income Tax</li>
+                        <li>GST</li>
+                        <li>Basic Business Finance</li>
+                    </ul>
+                    
+                    <h4>Research Area</h4>
+                    <ul>
+                        <li>Education</li>
+                    </ul>
+                    
+                    <h4>Professional Experience</h4>
+                    <ul>
+                        <li>Nimbus School of Education.</li>
+                        <li>3 years teaching experience in Purugyananjli International school Ghaziabad.</li>
+                        <li>2 years experience in Siksha International school Modinagar Ghaziabad.</li>
+                    </ul>
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Categories Start -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Quick Link</h4>
+                    <a class="btn btn-link" href="about.html">About Us</a>
+                    <a class="btn btn-link" href="contact.html">Contact Us</a>
+                    <a class="btn btn-link" href="#">Privacy Policy</a>
+                    <a class="btn btn-link" href="#">Terms & Condition</a>
+                    <a class="btn btn-link" href="FAQ.html">FAQs & Help</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>National Highway 72 Jhajra, Chakrata Rd,
+                        Dehradun, Uttarakhand 248007</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>7088019933, +91-9897580644</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>namdehradun@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/nimbus0098/"><i
+                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social"
+                            href="https://www.facebook.com/nimbusacademydehradun/ "><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social"
+                            href="https://youtube.com/@nimbusacademydehradunuttar7524?si=CxdEu2cO5wtk24aC"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social"
+                            href="https://in.linkedin.com/in/nimbus-academy-of-management-528abb9a"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <!---
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Gallery</h4>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            --->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Newsletter</h4>
+                    
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button"
+                            class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">NIMBUS</a>, All Right Reserved.
+
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="index.html">Home</a>
+                            <a href="">Cookies</a>
+                            <a href="">Help</a>
+                            <a href="">FAQs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+
+
+
+    <!---Social Media Start-->
+    <div class="floating-social">
+        <a href="https://api.whatsapp.com/send?phone=9897580644" target="_blank" rel="noopener">
+            <img src="./img/assests/wp.png" alt="whatsapp">
+        </a>
+        <a href="tel:+91-9897580644">
+            <img src="./img/assests/ph.png" alt="phone">
+        </a>
+        <button type="button" class="button-unstyled">
+            <img src="./img/assests/if.png" alt="email" style="height: 30px; width: 30px;">
+        </button>
+    </div>
+
+    <!---Social Media end-->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+/* ================== SCROLLER ================== */
+const prev = document.getElementById('prev-btn');
+const next = document.getElementById('next-btn');
+const list = document.getElementById('item-list');
+
+const itemWidth = 150;
+const padding = 10;
+
+if (prev && next && list) {
+    prev.addEventListener('click', () => {
+        list.scrollLeft -= itemWidth + padding;
+    });
+
+    next.addEventListener('click', () => {
+        list.scrollLeft += itemWidth + padding;
+    });
+}
+
+
+/* ================== CREATE MODAL (ONCE) ================== */
+document.body.insertAdjacentHTML("beforeend", `
+    <div class="modal-overlay" id="facultyModal" style="display:none;">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal()">×</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+`);
+
+
+/* ================== OPEN MODAL ================== */
+function openModal(htmlContent) {
+    document.getElementById("modalContent").innerHTML = htmlContent;
+    document.getElementById("facultyModal").style.display = "flex";
+}
+
+/* ================== CLOSE MODAL ================== */
+function closeModal() {
+    document.getElementById("facultyModal").style.display = "none";
+}
+
+
+/* ================== READ MORE → OPEN MODAL ================== */
+document.querySelectorAll(".read-more").forEach(btn => {
+    btn.addEventListener("click", function () {
+        
+        let card = this.closest(".card");
+        if (!card) return;
+
+        let name = card.querySelector(".card-title")?.innerText || "Faculty Member";
+        let position = card.querySelector("h6")?.innerText || "";
+        let details = card.querySelector(".card-more-content")?.innerHTML || "No details available";
+
+        openModal(`
+            <h2>${name}</h2>
+            <h4 style="color:#666;margin-top:-10px;margin-bottom:10px">${position}</h4>
+            <hr style="margin:10px 0;">
+            ${details}
+        `);
+    });
+});
+
+
+/* ================== MAKE SURE EXPANSION NEVER HAPPENS ================== */
+document.querySelectorAll(".card-more-content").forEach(sec => {
+    sec.style.display = "none";  // Prevent old expand behavior
+});
+
+// Disable toggleContent if exists anywhere
+window.toggleContent = function(){};
+</script>
+
+
+</body>
+
+</html>

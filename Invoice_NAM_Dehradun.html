@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - NAM Dehradun | Arman Goswami</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f1860;
+            --primary-light: #1a237e;
+            --accent: #1FCAC5;
+            --accent-dark: #179e9a;
+            --dark: #1a1a2e;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --red: #ef4444;
+            --orange: #f59e0b;
+            --green: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f0f4f8;
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .invoice-page {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        .invoice-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent-dark) 100%);
+            color: white;
+            padding: 40px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .invoice-header-left h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .invoice-header-left p {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .invoice-header-right {
+            text-align: right;
+        }
+
+        .invoice-number {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+
+        .invoice-number strong {
+            font-weight: 600;
+            opacity: 1;
+            font-size: 15px;
+        }
+
+        /* Info Section */
+        .invoice-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 50px;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .info-block h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gray-400);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .info-block p {
+            font-size: 14px;
+            color: var(--gray-700);
+            margin-bottom: 2px;
+        }
+
+        .info-block .name {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--dark);
+        }
+
+        /* Issue Summary */
+        .issue-summary {
+            padding: 30px 50px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .issue-summary h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .issue-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .issue-card {
+            text-align: center;
+            padding: 16px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .issue-card .count {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .issue-card .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .issue-card.critical { background: #fef2f2; border-color: #fecaca; }
+        .issue-card.critical .count { color: var(--red); }
+        .issue-card.critical .label { color: #b91c1c; }
+
+        .issue-card.high { background: #fffbeb; border-color: #fde68a; }
+        .issue-card.high .count { color: var(--orange); }
+        .issue-card.high .label { color: #b45309; }
+
+        .issue-card.medium { background: #eff6ff; border-color: #bfdbfe; }
+        .issue-card.medium .count { color: #3b82f6; }
+        .issue-card.medium .label { color: #1d4ed8; }
+
+        .issue-card.low { background: #ecfdf5; border-color: #a7f3d0; }
+        .issue-card.low .count { color: var(--green); }
+        .issue-card.low .label { color: #047857; }
+
+        /* Services Table */
+        .services-section {
+            padding: 30px 50px;
+        }
+
+        .services-section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .services-table thead th {
+            background: var(--gray-100);
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-600);
+            font-weight: 700;
+            border: none;
+        }
+
+        .services-table thead th:last-child {
+            text-align: right;
+        }
+
+        .services-table tbody td {
+            padding: 14px 16px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--gray-100);
+            color: var(--gray-700);
+            border: none;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .services-table tbody td:last-child {
+            text-align: right;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .services-table tbody td .service-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .services-table tbody td .service-desc {
+            font-size: 12px;
+            color: var(--gray-400);
+            margin-top: 2px;
+        }
+
+        .services-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Totals */
+        .totals-section {
+            padding: 0 50px 30px;
+        }
+
+        .totals-box {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .totals-table {
+            width: 280px;
+        }
+
+        .totals-table .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .totals-table .row.total {
+            border-top: 2px solid var(--gray-800);
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .totals-table .row .amount {
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Payment Section */
+        .payment-section {
+            padding: 24px 50px;
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .payment-section h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .payment-item {
+            font-size: 13px;
+        }
+
+        .payment-item .label {
+            color: var(--gray-400);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .payment-item .value {
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .invoice-footer {
+            padding: 24px 50px;
+            text-align: center;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .invoice-footer p {
+            font-size: 12px;
+            color: var(--gray-400);
+        }
+
+        .invoice-footer .thank-you {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-dark);
+            margin-bottom: 4px;
+        }
+
+        /* Badge */
+        .status-badge {
+            display: inline-block;
+            background: rgba(31, 202, 197, 0.15);
+            color: var(--accent-dark);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-top: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .invoice-page {
+                box-shadow: none;
+                margin: 0;
+                border-radius: 0;
+                max-width: none;
+            }
+            .print-btn {
+                display: none !important;
+            }
+        }
+
+        .print-btn {
+            display: block;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .print-btn button {
+            background: linear-gradient(135deg, var(--primary), var(--accent-dark));
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .print-btn button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 24, 96, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invoice-page">
+        <!-- Header -->
+        <div class="invoice-header">
+            <div class="invoice-header-left">
+                <h1>INVOICE</h1>
+                <p>Website Frontend Debugging & Optimization</p>
+            </div>
+            <div class="invoice-header-right">
+                <div class="invoice-number">Invoice No: <strong>INV-NAM-2026-0517</strong></div>
+                <div class="invoice-number">Date: <strong>17 May 2026</strong></div>
+                <div class="invoice-number">Due Date: <strong>31 May 2026</strong></div>
+                <div class="status-badge">Pending</div>
+            </div>
+        </div>
+
+        <!-- Client & Developer Info -->
+        <div class="invoice-info">
+            <div class="info-block">
+                <h4>Bill To</h4>
+                <p class="name">NAM Dehradun</p>
+                <p>Nimbus Academy of Management</p>
+                <p>NH-72, Jhajra, Chakrata Rd</p>
+                <p>Dehradun, Uttarakhand 248007</p>
+                <p>namdehradun@gmail.com</p>
+            </div>
+            <div class="info-block" style="text-align: right;">
+                <h4>From</h4>
+                <p class="name">Arman Goswami</p>
+                <p>Frontend Developer & QA Specialist</p>
+                <p>UI/UX Designer</p>
+                <p>Dehradun, India</p>
+            </div>
+        </div>
+
+        <!-- Issue Summary -->
+        <div class="issue-summary">
+            <h3>🔍 Audit Summary — Issues Discovered</h3>
+            <div class="issue-grid">
+                <div class="issue-card critical">
+                    <div class="count">8</div>
+                    <div class="label">Critical</div>
+                </div>
+                <div class="issue-card high">
+                    <div class="count">14</div>
+                    <div class="label">High</div>
+                </div>
+                <div class="issue-card medium">
+                    <div class="count">16</div>
+                    <div class="label">Medium</div>
+                </div>
+                <div class="issue-card low">
+                    <div class="count">9</div>
+                    <div class="label">Low</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Table -->
+        <div class="services-section">
+            <h3>📋 Services & Pricing Breakdown</h3>
+            <table class="services-table">
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">#</th>
+                        <th>Service</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div class="service-name">UI/UX Debugging</div>
+                            <div class="service-desc">Complete visual bug audit, alignment fixes, typography corrections, color consistency, template cleanup</div>
+                        </td>
+                        <td>₹2,000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div class="service-name">Responsive Design Fixes</div>
+                            <div class="service-desc">Mobile, tablet, laptop & desktop responsiveness across all breakpoints (480px, 768px, 991px, 1200px)</div>
+                        </td>
+                        <td>₹1,500</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <div class="service-name">Layout Corrections</div>
+                            <div class="service-desc">Navbar fixes, hero section, About Us stacking, events overflow, footer links, carousel, inline CSS extraction</div>
+                        </td>
+                        <td>₹2,000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <div class="service-name">Performance Optimization</div>
+                            <div class="service-desc">Image compression (~200MB savings), script deduplication, lazy loading, video optimization</div>
+                        </td>
+                        <td>₹1,000</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <div class="service-name">Final Testing & QA</div>
+                            <div class="service-desc">Cross-browser testing, console error verification, form validation, accessibility review</div>
+                        </td>
+                        <td>₹500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Totals -->
+        <div class="totals-section">
+            <div class="totals-box">
+                <div class="totals-table">
+                    <div class="row">
+                        <span>Subtotal</span>
+                        <span class="amount">₹7,000</span>
+                    </div>
+                    <div class="row">
+                        <span>GST (0%)</span>
+                        <span class="amount">₹0</span>
+                    </div>
+                    <div class="row">
+                        <span>Discount</span>
+                        <span class="amount" style="color: #10b981;">−₹1,000</span>
+                    </div>
+                    <div class="row total">
+                        <span>Total Due</span>
+                        <span class="amount">₹6,000 INR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Section -->
+        <div class="payment-section">
+            <h3>💳 Payment Information</h3>
+            <div class="payment-grid">
+                <div class="payment-item">
+                    <div class="label">Payment Method</div>
+                    <div class="value">UPI / Bank Transfer / Cash</div>
+                </div>
+                <div class="payment-item">
+                    <div class="label">Payment Terms</div>
+                    <div class="value">Due within 14 days of invoice date</div>
+                </div>
+                <div class="payment-item">
+                    <div class="label">Account Holder</div>
+                    <div class="value">Arman Goswami</div>
+                </div>
+                <div class="payment-item">
+                    <div class="label">Project Duration</div>
+                    <div class="value">7 Working Days (Estimated)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="invoice-footer">
+            <p class="thank-you">Thank you for your business!</p>
+            <p>This invoice was generated as part of the NAM Website Frontend Audit & Optimization project.</p>
+            <p style="margin-top: 8px;">47 issues identified → Comprehensive fix plan delivered → All work performed locally.</p>
+        </div>
+    </div>
+
+    <!-- Print Button -->
+    <div class="print-btn">
+        <button onclick="window.print()">📄 Save as PDF / Print Invoice</button>
+    </div>
+
+</body>
+</html>

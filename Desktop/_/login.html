@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"href="loginf.css">
+</head>
+<body>
+    <script>
+        function myfun(){
+            var a = document.getElementById("passwords").value;
+            if(a=="")
+            {
+                document.getElementById("messages").innerHTML="**please fill password";
+                return false;
+
+            }
+        }
+
+    </script>
+
+    <center><H1 id="dl">DISTRIBUTORS LOGIN</H1></center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form onsubmit="return myfun() ">
+        <br>
+        <br>
+        <div class="LOGIN"> <br>
+            <br> DISTRIBUTOR ID:
+        <input type ="text "placeholder="distributor id"><br>
+       <br>
+       <br>
+       <br> PASSWORD:
+        <input type="password" id="passwords" value=""><span id="messages"></span><br><br><br>
+        <br>
+        <br>
+        <input type="submit"value="Submit">
+    </div>
+
+    </form>
+   
+    
+    <SCRIPT>
+        function myfun()
+        {
+        var a = document.getElementById("mypass").value;
+        if(a==""){
+            document.getElementById("message").innerHTML="please fill the password";  
+            return false;
+        }
+    }
+            
+    </SCRIPT>
+</body>
+</html>

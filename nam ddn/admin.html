@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Nimbus Academy Grievance System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .logo h1 {
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logout-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .main-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .grievances-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .grievances-table th,
+        .grievances-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .grievances-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-submitted { background: #fff3cd; color: #856404; }
+        .status-under-review { background: #cce5ff; color: #004085; }
+        .status-in-progress { background: #d1ecf1; color: #0c5460; }
+        .status-resolved { background: #d4edda; color: #155724; }
+        .status-closed { background: #f8d7da; color: #721c24; }
+
+        .priority-badge {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .priority-low { background: #e9ecef; color: #6c757d; }
+        .priority-medium { background: #fff3cd; color: #856404; }
+        .priority-high { background: #f8d7da; color: #721c24; }
+        .priority-urgent { background: #f5c6cb; color: #721c24; }
+
+        .action-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+        .action-btn:hover {
+            background: #5a67d8;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: #2c3e50;
+        }
+
+        .close {
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+
+            .grievances-table {
+                font-size: 12px;
+            }
+
+            .grievances-table th,
+            .grievances-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="login-form">
+                <h2>Admin Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Login</button>
+                </form>
+                <div id="loginError" style="color: red; margin-top: 10px; display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Admin Interface -->
+    <div id="adminInterface" style="display: none;">
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">NAM</div>
+                    <h1>Nimbus Academy - Admin Panel</h1>
+                </div>
+                <div class="user-info">
+                    <span id="userName"></span>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+            <div class="dashboard">
+                <div class="sidebar">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#" class="active" onclick="showSection('dashboard')">Dashboard</a></li>
+                        <li><a href="#" onclick="showSection('grievances')">All Grievances</a></li>
+                        <li><a href="#" onclick="showSection('reports')">Reports</a></li>
+                        <li><a href="#" onclick="showSection('settings')">Settings</a></li>
+                    </ul>
+                </div>
+
+                <div class="main-content">
+                    <!-- Dashboard Section -->
+                    <div id="dashboardSection">
+                        <h2>Dashboard Overview</h2>
+                        <div class="stats-grid" id="statsGrid">
+                            <!-- Stats will be loaded here -->
+                        </div>
+
+                        <h3>Recent Grievances</h3>
+                        <table class="grievances-table" id="recentGrievancesTable">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Subject</th>
+                                    <th>Status</th>
+                                    <th>Priority</th>
+                                    <th>Submitted</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentGrievancesBody">
+                                <!-- Recent grievances will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Grievances Section -->
+                    <div id="grievancesSection" style="display: none;">
+                        <h2>All Grievances</h2>
+                        <div class="filters">
+                            <div class="filter-group">
+                                <label for="statusFilter">Status</label>
+                                <select id="statusFilter">
+                                    <option value="">All Status</option>
+                                    <option value="Submitted">Submitted</option>
+                                    <option value="Under Review">Under Review</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Resolved">Resolved</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="categoryFilter">Category</label>
+                                <select id="categoryFilter">
+                                    <option value="">All Categories</option>
+                                    <option value="academic">Academic Issues</option>
+                                    <option value="administrative">Administrative</option>
+                                    <option value="faculty">Faculty Related</option>
+                                    <option value="infrastructure">Infrastructure</option>
+                                    <option value="harassment">Harassment/Bullying</option>
+                                    <option value="financial">Financial Matters</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="priorityFilter">Priority</label>
+                                <select id="priorityFilter">
+                                    <option value="">All Priorities</option>
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                    <option value="urgent">Urgent</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="searchFilter">Search</label>
+                                <input type="text" id="searchFilter" placeholder="Reference, Name, Subject">
+                            </div>
+                            <div class="filter-group">
+                                <label>&nbsp;</label>
+                                <button class="btn" onclick="applyFilters()">Apply Filters</button>
+                            </div>
+                        </div>
+
+                        <table class="grievances-table" id="grievancesTable">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Name</th>
+                                    <th>Subject</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Priority</th>
+                                    <th>Submitted</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="grievancesBody">
+                                <!-- Grievances will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Reports Section -->
+                    <div id="reportsSection" style="display: none;">
+                        <h2>Reports & Analytics</h2>
+                        <div id="reportsContent">
+                            <!-- Reports will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Admins Section -->
+                    <div id="adminsSection" style="display: none;">
+                        <h2>Admin Management</h2>
+                        <div style="margin-bottom: 30px;">
+                            <h3>Add New Admin</h3>
+                            <form id="addAdminForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                                <div class="form-group">
+                                    <label for="adminUsername">Username *</label>
+                                    <input type="text" id="adminUsername" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="adminPassword">Password *</label>
+                                    <input type="password" id="adminPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="adminFullName">Full Name *</label>
+                                    <input type="text" id="adminFullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="adminEmail">Email</label>
+                                    <input type="email" id="adminEmail">
+                                </div>
+                                <div class="form-group" style="grid-column: span 2;">
+                                    <button type="submit" class="btn">Add Admin</button>
+                                </div>
+                            </form>
+                            <div id="adminFormMessage" style="display: none; padding: 10px; border-radius: 6px; margin-top: 10px;"></div>
+                        </div>
+
+                        <h3>Existing Admins</h3>
+                        <table class="grievances-table" id="adminsTable">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Created Date</th>
+                                    <th>Last Login</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminsTableBody">
+                                <!-- Admin users will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Settings Section -->
+                    <div id="settingsSection" style="display: none;">
+                        <h2>System Settings</h2>
+                        <div id="settingsContent">
+                            <!-- Settings will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grievance Detail Modal -->
+    <div id="grievanceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Grievance Details</h2>
+                <span class="close" onclick="closeModal('grievanceModal')">&times;</span>
+            </div>
+            <div id="grievanceDetailContent">
+                <!-- Grievance details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let currentSection = 'dashboard';
+
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedInUser = localStorage.getItem('adminUser');
+            if (loggedInUser) {
+                currentUser = JSON.parse(loggedInUser);
+                showAdminInterface();
+            } else {
+                showLoginModal();
+            }
+        });
+
+        // Show login modal
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+            document.getElementById('adminInterface').style.display = 'none';
+        }
+
+        // Show admin interface
+        function showAdminInterface() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('adminInterface').style.display = 'block';
+            document.getElementById('userName').textContent = currentUser.full_name;
+            loadDashboard();
+        }
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            fetch('/api/admin/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    currentUser = data.user;
+                    localStorage.setItem('adminUser', JSON.stringify(currentUser));
+                    showAdminInterface();
+                } else {
+                    document.getElementById('loginError').textContent = data.message;
+                    document.getElementById('loginError').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('loginError').textContent = 'Login failed. Please try again.';
+                document.getElementById('loginError').style.display = 'block';
+            });
+        });
+
+        // Logout
+        function logout() {
+            localStorage.removeItem('adminUser');
+            currentUser = null;
+            showLoginModal();
+        }
+
+        // Show section
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.main-content > div').forEach(div => {
+                div.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(section + 'Section').style.display = 'block';
+            
+            // Update active link
+            document.querySelectorAll('.sidebar a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            currentSection = section;
+            
+            // Load section data
+            switch(section) {
+                case 'dashboard':
+                    loadDashboard();
+                    break;
+                case 'grievances':
+                    loadGrievances();
+                    break;
+                case 'admins':
+                    loadAdmins();
+                    break;
+                case 'reports':
+                    loadReports();
+                    break;
+                case 'settings':
+                    loadSettings();
+                    break;
+            }
+        }
+
+        // Load dashboard
+        function loadDashboard() {
+            // Load statistics
+            fetch('/api/admin/statistics')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const stats = data.statistics;
+                    const statsGrid = document.getElementById('statsGrid');
+                    
+                    statsGrid.innerHTML = `
+                        <div class="stat-card">
+                            <div class="stat-number">${stats.total_grievances}</div>
+                            <div class="stat-label">Total Grievances</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${stats.recent_grievances}</div>
+                            <div class="stat-label">Recent (7 days)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${stats.average_resolution_days}</div>
+                            <div class="stat-label">Avg Resolution (days)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${stats.status_distribution.Resolved || 0}</div>
+                            <div class="stat-label">Resolved</div>
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => console.error('Error loading statistics:', error));
+            
+            // Load recent grievances
+            fetch('/api/admin/grievances?limit=10')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const tbody = document.getElementById('recentGrievancesBody');
+                    tbody.innerHTML = '';
+                    
+                    data.grievances.slice(0, 10).forEach(grievance => {
+                        const row = createGrievanceRow(grievance, true);
+                        tbody.appendChild(row);
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading recent grievances:', error));
+        }
+
+        // Load grievances
+        function loadGrievances() {
+            const status = document.getElementById('statusFilter').value;
+            const category = document.getElementById('categoryFilter').value;
+            const priority = document.getElementById('priorityFilter').value;
+            const search = document.getElementById('searchFilter').value;
+            
+            let url = '/api/admin/grievances';
+            const params = [];
+            
+            if (status) params.push(`status=${status}`);
+            if (category) params.push(`category=${category}`);
+            if (priority) params.push(`priority=${priority}`);
+            if (search) params.push(`search=${search}`);
+            
+            if (params.length > 0) {
+                url += '?' + params.join('&');
+            }
+            
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const tbody = document.getElementById('grievancesBody');
+                    tbody.innerHTML = '';
+                    
+                    data.grievances.forEach(grievance => {
+                        const row = createGrievanceRow(grievance, false);
+                        tbody.appendChild(row);
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading grievances:', error));
+        }
+
+        // Create grievance row
+        function createGrievanceRow(grievance, isRecent) {
+            const row = document.createElement('tr');
+            
+            const statusClass = 'status-' + grievance.status.toLowerCase().replace(' ', '-');
+            const priorityClass = 'priority-' + grievance.priority.toLowerCase();
+            
+            const submittedDate = new Date(grievance.submitted_date).toLocaleDateString();
+            
+            if (isRecent) {
+                row.innerHTML = `
+                    <td>${grievance.reference_number}</td>
+                    <td>${grievance.subject}</td>
+                    <td><span class="status-badge ${statusClass}">${grievance.status}</span></td>
+                    <td><span class="priority-badge ${priorityClass}">${grievance.priority}</span></td>
+                    <td>${submittedDate}</td>
+                    <td>
+                        <button class="action-btn" onclick="viewGrievance(${grievance.id})">View</button>
+                    </td>
+                `;
+            } else {
+                row.innerHTML = `
+                    <td>${grievance.reference_number}</td>
+                    <td>${grievance.full_name}</td>
+                    <td>${grievance.subject}</td>
+                    <td>${grievance.category}</td>
+                    <td><span class="status-badge ${statusClass}">${grievance.status}</span></td>
+                    <td><span class="priority-badge ${priorityClass}">${grievance.priority}</span></td>
+                    <td>${submittedDate}</td>
+                    <td>
+                        <button class="action-btn" onclick="viewGrievance(${grievance.id})">View</button>
+                        <button class="action-btn" onclick="editGrievance(${grievance.id})">Edit</button>
+                    </td>
+                `;
+            }
+            
+            return row;
+        }
+
+        // View grievance details
+        function viewGrievance(id) {
+            fetch(`/api/admin/grievances/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const grievance = data.grievance;
+                    const content = document.getElementById('grievanceDetailContent');
+                    
+                    const submittedDate = new Date(grievance.submitted_date).toLocaleDateString();
+                    const updatedDate = new Date(grievance.updated_date).toLocaleDateString();
+                    
+                    content.innerHTML = `
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <h3>Grievance Information</h3>
+                                <p><strong>Reference:</strong> ${grievance.reference_number}</p>
+                                <p><strong>Name:</strong> ${grievance.full_name}</p>
+                                <p><strong>Email:</strong> ${grievance.email}</p>
+                                <p><strong>Phone:</strong> ${grievance.phone}</p>
+                                <p><strong>Student ID:</strong> ${grievance.student_id || 'N/A'}</p>
+                                <p><strong>Category:</strong> ${grievance.category}</p>
+                                <p><strong>Priority:</strong> ${grievance.priority}</p>
+                                <p><strong>Status:</strong> ${grievance.status}</p>
+                                <p><strong>Progress:</strong> ${grievance.progress}%</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${grievance.progress}%"></div>
+                                </div>
+                                <p><strong>Submitted:</strong> ${submittedDate}</p>
+                                <p><strong>Last Updated:</strong> ${updatedDate}</p>
+                                <p><strong>Assigned Officer:</strong> ${grievance.assigned_officer || 'Not assigned'}</p>
+                            </div>
+                            <div>
+                                <h3>Grievance Details</h3>
+                                <p><strong>Subject:</strong> ${grievance.subject}</p>
+                                <p><strong>Description:</strong></p>
+                                <p style="background: #f8f9fa; padding: 10px; border-radius: 6px;">${grievance.description}</p>
+                                ${grievance.notes ? `<p><strong>Notes:</strong></p><p style="background: #f8f9fa; padding: 10px; border-radius: 6px;">${grievance.notes}</p>` : ''}
+                                ${grievance.resolution ? `<p><strong>Resolution:</strong></p><p style="background: #d4edda; padding: 10px; border-radius: 6px;">${grievance.resolution}</p>` : ''}
+                            </div>
+                        </div>
+                        ${grievance.status_history && grievance.status_history.length > 0 ? `
+                            <div style="margin-top: 20px;">
+                                <h3>Status History</h3>
+                                <table class="grievances-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Changed By</th>
+                                            <th>Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${grievance.status_history.map(history => `
+                                            <tr>
+                                                <td>${new Date(history.changed_date).toLocaleString()}</td>
+                                                <td>${history.old_status}</td>
+                                                <td>${history.new_status}</td>
+                                                <td>${history.changed_by}</td>
+                                                <td>${history.notes || ''}</td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ` : ''}
+                    `;
+                    
+                    document.getElementById('grievanceModal').style.display = 'block';
+                }
+            })
+            .catch(error => console.error('Error loading grievance details:', error));
+        }
+
+        // Edit grievance
+        function editGrievance(id) {
+            fetch(`/api/admin/grievances/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const grievance = data.grievance;
+                    const content = document.getElementById('grievanceDetailContent');
+                    
+                    content.innerHTML = `
+                        <form id="editGrievanceForm">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div>
+                                    <h3>Update Grievance Status</h3>
+                                    <div class="form-group">
+                                        <label for="editStatus">Status</label>
+                                        <select id="editStatus" required>
+                                            <option value="Submitted" ${grievance.status === 'Submitted' ? 'selected' : ''}>Submitted</option>
+                                            <option value="Under Review" ${grievance.status === 'Under Review' ? 'selected' : ''}>Under Review</option>
+                                            <option value="In Progress" ${grievance.status === 'In Progress' ? 'selected' : ''}>In Progress</option>
+                                            <option value="Resolved" ${grievance.status === 'Resolved' ? 'selected' : ''}>Resolved</option>
+                                            <option value="Closed" ${grievance.status === 'Closed' ? 'selected' : ''}>Closed</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editProgress">Progress (%)</label>
+                                        <input type="number" id="editProgress" min="0" max="100" value="${grievance.progress}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editAssignedOfficer">Assigned Officer</label>
+                                        <input type="text" id="editAssignedOfficer" value="${grievance.assigned_officer || ''}">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3>Resolution & Notes</h3>
+                                    <div class="form-group">
+                                        <label for="editResolution">Resolution</label>
+                                        <textarea id="editResolution">${grievance.resolution || ''}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editNotes">Notes</label>
+                                        <textarea id="editNotes">${grievance.notes || ''}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align: right; margin-top: 20px;">
+                                <button type="button" class="btn btn-secondary" onclick="closeModal('grievanceModal')">Cancel</button>
+                                <button type="submit" class="btn">Update Grievance</button>
+                            </div>
+                        </form>
+                    `;
+                    
+                    document.getElementById('editGrievanceForm').addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        updateGrievance(id);
+                    });
+                    
+                    document.getElementById('grievanceModal').style.display = 'block';
+                }
+            })
+            .catch(error => console.error('Error loading grievance for edit:', error));
+        }
+
+        // Update grievance
+        function updateGrievance(id) {
+            const formData = {
+                status: document.getElementById('editStatus').value,
+                progress: parseInt(document.getElementById('editProgress').value),
+                assigned_officer: document.getElementById('editAssignedOfficer').value,
+                resolution: document.getElementById('editResolution').value,
+                notes: document.getElementById('editNotes').value,
+                changed_by: currentUser.full_name
+            };
+            
+            fetch(`/api/admin/grievances/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Grievance updated successfully!');
+                    closeModal('grievanceModal');
+                    if (currentSection === 'dashboard') {
+                        loadDashboard();
+                    } else {
+                        loadGrievances();
+                    }
+                } else {
+                    alert('Error updating grievance: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error updating grievance:', error);
+                alert('Error updating grievance. Please try again.');
+            });
+        }
+
+        // Apply filters
+        function applyFilters() {
+            loadGrievances();
+        }
+
+        // Load reports
+        function loadReports() {
+            const content = document.getElementById('reportsContent');
+            content.innerHTML = '<h3>Reports functionality coming soon...</h3>';
+        }
+
+        // Load admins
+        function loadAdmins() {
+            fetch('/api/admin/users')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const tbody = document.getElementById('adminsTableBody');
+                    tbody.innerHTML = '';
+
+                    data.users.forEach(user => {
+                        const createdDate = user.created_date ? new Date(user.created_date).toLocaleDateString() : 'N/A';
+                        const lastLogin = user.last_login ? new Date(user.last_login).toLocaleString() : 'Never';
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${user.username}</td>
+                            <td>${user.full_name}</td>
+                            <td>${user.email || 'N/A'}</td>
+                            <td>${user.role}</td>
+                            <td>${createdDate}</td>
+                            <td>${lastLogin}</td>
+                            <td>
+                                ${user.username !== 'admin' ? `<button class="action-btn btn-danger" onclick="deleteAdmin(${user.id}, '${user.username}')">Delete</button>` : '<em>Default Admin</em>'}
+                            </td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                } else {
+                    console.error('Error loading admins:', data.message);
+                }
+            })
+            .catch(error => console.error('Error loading admins:', error));
+        }
+
+        // Add new admin
+        document.getElementById('addAdminForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const adminData = {
+                username: document.getElementById('adminUsername').value,
+                password: document.getElementById('adminPassword').value,
+                full_name: document.getElementById('adminFullName').value,
+                email: document.getElementById('adminEmail').value
+            };
+
+            fetch('/api/admin/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(adminData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messageDiv = document.getElementById('adminFormMessage');
+                if (data.success) {
+                    messageDiv.textContent = data.message;
+                    messageDiv.style.backgroundColor = '#d4edda';
+                    messageDiv.style.color = '#155724';
+                    messageDiv.style.border = '1px solid #c3e6cb';
+                    messageDiv.style.display = 'block';
+
+                    // Reset form
+                    document.getElementById('addAdminForm').reset();
+
+                    // Reload admins list
+                    loadAdmins();
+                } else {
+                    messageDiv.textContent = data.message;
+                    messageDiv.style.backgroundColor = '#f8d7da';
+                    messageDiv.style.color = '#721c24';
+                    messageDiv.style.border = '1px solid #f5c6cb';
+                    messageDiv.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error creating admin:', error);
+                const messageDiv = document.getElementById('adminFormMessage');
+                messageDiv.textContent = 'Error creating admin. Please try again.';
+                messageDiv.style.backgroundColor = '#f8d7da';
+                messageDiv.style.color = '#721c24';
+                messageDiv.style.border = '1px solid #f5c6cb';
+                messageDiv.style.display = 'block';
+            });
+        });
+
+        // Delete admin
+        function deleteAdmin(userId, username) {
+            if (confirm(`Are you sure you want to delete admin user "${username}"?`)) {
+                fetch(`/api/admin/users/${userId}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        loadAdmins();
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error deleting admin:', error);
+                    alert('Error deleting admin. Please try again.');
+                });
+            }
+        }
+
+        // Load settings
+        function loadSettings() {
+            const content = document.getElementById('settingsContent');
+            content.innerHTML = '<h3>Settings functionality coming soon...</h3>';
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

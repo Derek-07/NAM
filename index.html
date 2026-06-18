@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nimbus Academy of Management – Dehradun | NAM</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Nimbus Academy, NAM Dehradun, BCA, BBA, MBA, B.Com, B.Ed, BA, management institute Dehradun, Uttarakhand" name="keywords">
+    <meta content="Nimbus Academy of Management (NAM) Dehradun – Premier management institute in Uttarakhand since 1998. Offering BCA, BBA, MBA, B.Com, B.Ed, BA with 100% placement assistance." name="description">
+    <!-- Favicon -->
+    <link href="img/logologo-150x150.png" rel="icon">
+    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+ <!-- Chatbot CSS -->
+<style>
+  /* ================================
+     Chatbot Floating Button + Label
+  ================================ */
+  #chatbot-float-wrapper {
+    position: fixed;
+    bottom: 110px; /* Position above "Back to Top" button */
+    right: 45px;
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+  }
+
+  .chat-label {
+    background: white;
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-right: 8px;
+    font-size: 14px;
+    font-family: sans-serif;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative; /* Needed for arrow positioning */
+  }
+
+  /* Arrow pointing right toward chatbot button */
+  .chat-label::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent white; /* white arrow */
+  }
+
+  #chatbot-button {
+    /* Inherits position from wrapper */
+    z-index: 1001;
+  }
+
+  /* Responsive: Hide label on small screens */
+  @media (max-width: 600px) {
+    .chat-label {
+      display: none;
+    }
+  }
+
+  /* ===================
+     Chatbot Window Styles
+  =================== */
+  #chatbot-window {
+    position: fixed;
+    bottom: 140px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+
+  #chatbot-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  #chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 14px;
+    height: 280px;
+  }
+
+  .message {
+    margin: 5px 0;
+  }
+
+  .user {
+    text-align: right;
+    color: blue;
+  }
+
+  .bot {
+    text-align: left;
+    color: green;
+  }
+
+  #chatbot-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+
+  #chatbot-input input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    outline: none;
+  }
+
+  #chatbot-input button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+
+       /* ====== 🔸 Marquee Section ====== */
+  .announcement-bar {
+    width: 100%;
+    background-color: #eaf6ff;
+    overflow: hidden;
+    padding: 10px 0;
+    border-top: 2px solid #0b3c5d;
+    border-bottom: 2px solid #0b3c5d;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #003366;
+  }
+
+  .scrolling-text {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 18s linear infinite;
+    padding-left: 100%;
+    font-size: 1rem;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .separator {
+  margin: 0 30px;
+}
+/* Wrapper for heading + ticker */
+.news-container {
+  position: relative;
+  padding-top: 2px;
+}
+
+/* Vibrant gradient badge for heading */
+.news-heading {
+  position: absolute;
+  top: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* Purple to Blue */
+  color: white;
+  padding: 6px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 1;
+  border-radius: 20px;
+
+  /* New border color to stand out */
+  border: 2px solid #ffeb3b; /* Bright Yellow */
+
+  /* Optional glow to make it pop */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 
+              0 0 8px #ffeb3b;
+}
+
+/* Ticker box with vibrant background and inner glow */
+.news-ticker-wrapper {
+  height: 391px;
+  overflow: hidden;
+  border: none;
+  padding: 10px 10px 0;
+  background: linear-gradient(to bottom, #e3f2fd, #f3e5f5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+/* Ticker scroll animation */
+.news-ticker {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-up 15s linear infinite;
+  padding-top: 10px;
+}
+
+/* Each news item with modern color & hover effect */
+.news-item {
+  position: relative; /* For absolute children */
+  padding: 50px 14px 14px 14px; /* Top padding for meta */
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  background: linear-gradient(135deg, #42a5f5, #7e57c2);
+  border-radius: 6px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.news-item + .news-item {
+  margin-top: 10px;
+}
+
+.news-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #64b5f6, #9575cd);
+}
+
+/* Meta info block: NEW + date */
+.news-meta {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+/* NEW sticker styling */
+.new-sticker {
+  display: inline-block;
+  background-color: #ff1744;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  animation: blink 1s infinite;
+  box-shadow: 0 0 6px rgba(255, 23, 68, 0.6);
+}
+
+/* Posted date styling */
+.posted-date {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffeb3b;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Blinking effect */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Scrolling keyframe */
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Read More section */
+.readmore {
+  padding: 12px 0;
+  font-weight: bold;
+  text-align: right;
+  background: #ede7f6;
+}
+
+.readmore a {
+  color: #6a1b9a;
+  text-decoration: none;
+}
+
+.readmore a:hover {
+  text-decoration: underline;
+  color: #8e24aa;
+}
+
+/* Pause scroll on hover */
+.news-ticker-wrapper:hover .news-ticker {
+  animation-play-state: paused;
+}
+
+    </style>
+    
+</head>
+
+<body>
+
+ <!-- Auto Popup Modal -->
+<!-- <div class="modal fade" id="welcomePopup" tabindex="-1" aria-labelledby="welcomePopupLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content"> -->
+
+       <!-- Close Button -->
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="welcomePopupLabel">🎯 IAS | PCS Coaching Now at Nimbus</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>  -->
+
+      <!-- Modal Body -->
+      <!-- <div class="modal-body">
+        <p>
+          Nimbus Academy of Management is proud to offer comprehensive classroom coaching for IAS and PCS aspirants — now integrated alongside your academic journey. Powered by <strong>PRAYAS IAS Study Circle</strong>, a trusted name with <strong>22+ years</strong> of unmatched success in cracking UPSC Prelims, Mains, and Interviews, this program is designed to give you a focused and guided path to success in India's most prestigious civil services.
+        </p>
+        <p>
+          Whether you're pursuing BCA, BBA, B.Com, MBA, B.ed, BA or any other course at Nimbus, you can now prepare for competitive exams right from your own campus. Join dedicated face-to-face sessions led by expert faculty, benefit from regular mock tests, personalized mentorship, and strategic exam planning — all under one roof.
+        </p>
+        <p style="font-weight: bold; color: #d62828;">Your preparation, our PRAYAS. Start your civil services journey today!</p>
+      </div>
+
+    </div>
+  </div>
+</div>   -->
+
+
+    <div class="">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- old navbar -->
+        <!-- <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img src="img/nam-logo-new-1-1.png" alt="" style="width: 200px; height: 70px;">
+     <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>eLEARNING</h2>--
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="about.html" class="dropdown-item">About us</a>
+                        <a href="misson&vision.html" class="dropdown-item">Mission & Vision</a>
+                        <a href="chairmans's message.html" class="dropdown-item">Chairman's Message</a>
+                        <a href="Director'sMessage.html" class="dropdown-item">Director's Message</a>
+                        <a href="404.html" class="dropdown-item">Faculty</a>
+                        <a href="404.html" class="dropdown-item">Governing Council</a>
+                        <a href="404.html" class="dropdown-item">Advisiory Counsil</a>
+                        <a href="404.html" class="dropdown-item">Internal Committees</a>
+                    </div>
+                </div>
+
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admissions</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="404.html" class="dropdown-item">Eligiblity</a>
+                        <a href="404.html" class="dropdown-item">Admissions Process</a>
+                        <a href="404.html" class="dropdown-item">Fee Structure</a>
+                        <a href="404.html" class="dropdown-item">Payment</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Memberships</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="404.html" class="dropdown-item">PEARSON UG ENTRANCE EXAM</a>
+                        <a href="404.html" class="dropdown-item">ICT ACADEMY</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Courses</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="Mba.html" class="dropdown-item">MBA</a>
+                        <a href="BBA.html" class="dropdown-item">BBA</a>
+                        <a href="Bcom.html" class="dropdown-item">B.COM.</a>
+                        <a href="Bca.html" class="dropdown-item">BCA</a>
+                        <a href="Bed.html" class="dropdown-item">B.Ed.</a>
+                        <a href="BA.html" class="dropdown-item">BA</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">facilities</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="#" class="dropdown-item">Library</a>
+                        <a href="#" class="dropdown-item">Computer</a>
+                        <a href="#" class="dropdown-item">Sports</a>
+                        <a href="#" class="dropdown-item">Transport</a>
+                        <a href="#" class="dropdown-item">Cafeteria</a>
+                        <a href="#" class="dropdown-item">Smartclass</a>
+                        <a href="#" class="dropdown-item">Swayam</a>
+                        <a href="#" class="dropdown-item">Teacher Training Policy(AICTE) </a>
+                        <a href="#" class="dropdown-item">National Academic Depository</a>
+                        <a href="#" class="dropdown-item">Examination Reform Policy</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="alumni.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Alumni</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="404.html" class="dropdown-item">First ALumni Meet</a>
+                        <a href="404.html" class="dropdown-item">Second Alumni Meet</a>
+                        <a href="404.html" class="dropdown-item">Alumni Speak</a>
+                        
+                    </div>
+                </div>
+                <a href="placement.html" class="nav-item nav-link">Placements</a>
+                <a href="404.html" class="nav-item nav-link">Results</a>
+                <a href="Gallery.html" class="nav-item nav-link">Gallery</a>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="contact.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Apply Now<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav> -->
+
+        <!-- Navbar Start -->
+        <nav class="nav-bar  navbar-expand-lg navbar-light bg-light">
+
+
+            <div class="nav-one w-100" >
+                <div>
+                    <img src="./img/assests/NIM.png" alt="Logo" style="width: 90%; height: auto;">
+
+
+                </div>
+
+
+                <div class="nav-right-images" style="padding: 17px;">
+                    <!-- image 2 -->
+                    <div class="nav-right-images">
+                        <img src="./img/assests/28_new.png" class="w-100" />
+                        <!-- <img class="right-image-2" src="./img/assests/iso.png" width="20%" height="60px" /> -->
+                    </div>
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- nav links -->
+
+
+
+            <div class="collapse navbar-collapse " id="navbarNavDropdown" style="width: 100%;">
+                <div class="nav-links" id="nav-link-container" style="width: 100%;margin-right: -15px;">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link " data-bs-toggle="dropdown">About</a>
+                        <div class="dropdown-menu fade-down mt-0 " style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            
+                            <a href="about.html" class="dropdown-item">About us</a>
+                            <a href="misson&vision.html" class="dropdown-item">Mission & Vision</a>
+                            <a href="chairmans's message.html" class="dropdown-item">Chairman's Message</a>
+                            <!-- <a href="vicechancellor.html" class="dropdown-item">Vice chancellor Message</a>  -->
+                            <a href="Director'sMessage.html" class="dropdown-item">Director's Message</a>
+                            <!-- <a href="404.html" class="dropdown-item">Vice Chancellors' Message</a> -->
+                            <a href="foundationHistory.html" class="dropdown-item">Foundation History</a>
+                            <a href="governingCouncil.html" class="dropdown-item">Governing Council</a>
+                            <!-- <a href="404.html" class="dropdown-item">Board Of Governors</a> -->
+                             <a href="ExtensionApproval.html" class="dropdown-item">Mandatory Disclosure</a>
+                            <!-- <a href="404.html" class="dropdown-item">Awards & Certificates</a> -->
+                            <a href="internalCell.html" class="dropdown-item">Internal Committee</a>
+                        </div>
+
+                    </div>
+                    <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link " data-bs-toggle="dropdown">Academic Programs</a>
+                        <div class="dropdown-menu fade-down" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <a href="#" class="dropdown-item nav-item ug-nav dropdown double-nav ">
+                                UG-
+                                <div class="arrow-right"></div>
+                                <div class="double-nav-links">
+                                    <a href="BA.html" class="dropdown-item">
+                                        -BA
+                                    </a>
+                                    <a href="BBA.html" class="dropdown-item">
+                                        -BBA
+                                    </a>
+                                    <a href="Bcom.html" class="dropdown-item">
+                                        -B.Com
+                                    </a>
+                                    <a href="Bca.html" class="dropdown-item">
+                                        -BCA
+                                    </a>
+                                </div>
+                            </a>
+                            <a href="Mba.html" class="dropdown-item">PG- MBA</a>
+                            <a href="Bed.html" class="dropdown-item">Nimbus School Of Education – B.Ed</a>
+                        </div>
+                    </div>
+                    <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link " data-bs-toggle="dropdown">Faculty & Research</a>
+                        <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <a href="faculty.html" class="dropdown-item">Faculty Members</a>
+                            <a href="faculty_bed.html" class="dropdown-item">Faculty B.Ed</a>
+                            <!-- <a href="404.html" class="dropdown-item">Visiting Faculty Members</a> -->
+                            <!-- <a href="404.html" class="dropdown-item">Research & Publications</a> -->
+                            <!-- <a href="internalCell.html" class="dropdown-item">Internal Cell</a> -->
+                        </div>
+                        
+                    </div>
+                    <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link " data-bs-toggle="dropdown">Resources</a>
+                        <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <a href="library.html" class="dropdown-item">Library</a>
+                            <a href="itinfrastructure.html" class="dropdown-item">IT Infrastructure</a>
+                            <a href="sports.html" class="dropdown-item">Sports</a>
+                            <a href="multipurposehall.html" class="dropdown-item">Auditorium</a>
+                            <a href="hostel.html" class="dropdown-item">Hostel</a>
+                            <a href="cafeteria.html" class="dropdown-item">Cafeteria</a>
+                        </div>
+                        
+                    </div>
+                    <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="" class="nav-link " data-bs-toggle="dropdown">Corporate Placement</a>
+                        <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <a href="placementCommittee.html" class="dropdown-item">Placement Committee</a>
+                            <a href="placementReport.html" class="dropdown-item">Placement Reports</a>
+                            <a href="recruitmentActivities.html" class="dropdown-item">Recruitment Activities</a>
+                            <!-- <a href="#" class="dropdown-item">Summer Internships</a> -->
+                            <!-- <a href="#" class="dropdown-item">Our Recruiters</a> -->
+                            <a href="FAQ.html" class="dropdown-item">Recruitment FAQ</a>
+                            <a href="careerEnhancement.html" class="dropdown-item">Career Enhancement Initiatives</a>
+                        </div>
+                    </div>
+                    <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link " data-bs-toggle="dropdown">Admission</a>
+                        <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <a href="admissionPage.html" class="dropdown-item">Overview</a>
+                            <a href="adminssionCriteria.html" class="dropdown-item">Admission Criteria</a>
+                            <a href="coursefee.html" class="dropdown-item">Course Fee</a>
+                            <!-- <a href="404.html" class="dropdown-item">How To Apply</a> -->
+                            <!-- <a href="404.html" class="dropdown-item">Visit The Campus</a> -->
+                            <a href="registration.html" class="dropdown-item">Registration</a>
+                            <!-- <a href="courses/index_courses.html" class="dropdown-item">cour</a> -->
+                        </div>
+                    </div>
+                    <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link " data-bs-toggle="dropdown">Alumni</a>
+                        <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <!-- <a href="404.html" class="dropdown-item">Alumni Testimonials</a> -->
+                            <a href="alumni_details.html" class="dropdown-item">Alumni Details</a>
+                             <!-- <a href="404.html" class="dropdown-item">Alumni Profile</a> -->
+                            <!-- <a href="404.html" class="dropdown-item">Albums</a> -->
+                            <!-- <a href="404.html" class="dropdown-item">Contact Us</a> -->
+                        </div>
+                    </div>
+                    <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link " data-bs-toggle="dropdown">Campus Life</a>
+                        <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <!-- <a href="404.html" class="dropdown-item">News Room</a> -->
+                            <a href="Photos.html" class="dropdown-item">Photo Gallery</a>
+                            <!-- <a href="404.html" class="dropdown-item">Event Calander</a> -->
+                            <!-- <a href="404.html" class="dropdown-item">AICTE EoA</a> -->
+                             <!-- <a href="404.html" class="dropdown-item">Scholarship</a> --> 
+                            <!-- <a href="404.html" class="dropdown-item">Art & Culture</a> -->
+                        </div>
+                    </div>
+                    <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="" class="nav-link " data-bs-toggle="dropdown">Student Corner</a>
+                        <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <a href="Downloads.html" class="dropdown-item">Downloads Forms</a>
+                            <a href="Results.html" class="dropdown-item">Results</a> 
+                            <a href="redresal.html" class="dropdown-item" >Redresal and Grievance</a>                        
+                        </div>
+                    </div>
+                    
+                    <a id="apply-btn" href="#" class="btn btn-primary py-2 px-lg-2 d-none d-lg-block"
+                        style="background-color: #1FCAC5; color: white; font-weight: 500; ">Apply Now</a>
+                </div>
+            </div>
+
+    </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- popup form -->
+    <div class="popup-overlay" id="popupOverlay">
+
+        <div class="popup" id="popup">
+
+            <span class="close" id="closePopup">&times;</span>
+
+            <div class="popup-content">
+
+                <p>Enquiry Now !</p>
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="276a43fb-d0b6-47c1-952c-659bd1ee67cd">
+                    <input class="inputForm m-3" name="Name" type="text" placeholder="Enter Name" id="name">
+                    <input class="inputForm m-3" name="Email" type="email" placeholder="Enter Email" id="email">
+                    <!-- <label for="course">Choose courses:</label> -->
+                    <input class="inputForm m-3" name="Courses" type="text" placeholder="Enter Course" id="course"
+                        list="courses">
+                    <datalist id="courses">
+                        <option value="BA">
+                        <option value="BBA">
+                        <option value="MBA">
+                        <option value="B.com">
+                        <option value="Bca">
+                        <option value="B.Ed">
+                    </datalist>
+                    <input class="inputForm m-3" name="Phone_number" type="tel" placeholder="Enter Phone" id="phone" pattern="[0-9]{10}" title="Enter a valid 10-digit phone number">
+                    <button onclick="submitForm()">Submit</button>
+
+                </form>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div class=" position-relative">
+            <div class=" position-relative">
+                <!-- <img class="img-fluid" src="img/fornt-home-e1654927556186.jpg" alt="">  -->
+                <div class="main-text mb-2">
+                    <p class="main-head">Building Exemplary Forever</p>
+                    <p class="main-date">Since 1998</p>
+                    <!--  Marquee Starts Here -->
+                    <div class="announcement-bar">
+                      <div class="scrolling-text">
+                           🎓 B.Ed Admission Open (2025–2027) || Registration open for all the courses for the session 2026 – Apply Now for to avail seates and scholarship📢  
+                            <span class="separator">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+                             🎓बी.एड प्रवेश प्रारंभ (2025–2027) – अभी आवेदन करें, सबसे कम शुल्क पर शीघ्र नामांकन करें!📢
+                         </div>
+                    </div>
+                 <!-- 🔼 Marquee Ends Here -->
+                     </div>
+                 
+
+
+                <!-- <iframe style="
+                width: 100%;
+                height: 600px;
+                object-fit: cover;
+                margin: 0 auto;
+                " allow="autoplay"
+                    src="https://www.youtube.com/embed/ulgY1j-Npp8?si=MJF4Gtry7HsKpSng?autoplay=1&showinfo=0&controls=0" >
+                </iframe>  -->
+                <video style="
+                width: 100%;
+                max-height: 700px;
+                object-fit: cover;
+                margin: 0 auto;
+                " id="homevideo" muted="" autoplay="true" loop="true">
+                    <source src="./img/assests/campusTour.mp4" type="video/mp4">
+                </video>
+
+                <!-- <img src =  "./img/assests/Home.jpg" alt="" style="
+                width: 100%;
+                height: 600px;
+                object-fit: cover;
+                margin: 0 auto;
+                " id="homevideo">  -->
+                <!-- <video id="homevideo" poster="https://upes-production-cvb3e7frghdda0a4.z01.azurefd.net/drupal-data/2023-09/home-mobile.webp" muted="" autoplay="" playsinline="" loop="">
+                <source src="https://upes-production-cvb3e7frghdda0a4.z01.azurefd.net/drupal-data/2023-10/montage-video.mp4" type="video/mp4">
+              </video>
+              --->
+                <!--- <div class="position-absolute top-0 start-0 w-100 h-100 d-flex a lign-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                           
+                                <h1 class="display-3 text-white animated slideInDown">The Best Online Learning Platform</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.</p>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>--->
+            </div>
+
+        </div>
+    </div>
+
+   
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h1 style="text-align: center;">NAM WATCH WORDS</h1>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="info-box" style="background-color: var(--bs-purple); font-weight: bold;">
+                        <img src="./img/innovate/innovate.jpg" class="info-img" style="top: 15px;" />
+                        <p class="info-heading">INNOVATE</p>
+                        <div class="straight-line-2"></div>
+                        <p class="info-text">Innovation begins with a curious mind, eager to learn and explore, and it grows stronger when we have the courage to question the norm and imagine something better.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="info-box" style="background-color: var(--bs-pink); font-weight: bold;">
+                        <img src="./img/innovate/collaborate.jpg" class="info-img" style="width: 110px; top: -8px; " />
+                        <p class="info-heading">COLLABORATE</p>
+                        <div class="straight-line-2"></div>
+                        <p class="info-text" style="word-spacing: -0.05em;">Collaboration is a key part of the success of any organization, executed
+                            through a clearly defined vision and mission and based on transparency and constant
+                            communication.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="info-box" style="background-color: var(--bs-green); font-weight: bold;">
+                        <img src="./img/innovate/Lead.jpg" class="info-img" style="width: 120px; top: 5px; " />
+                        <p class="info-heading">LEAD</p>
+                        <div class="straight-line-2"></div>
+                        <p class="info-text">Leadership isn’t about giving orders—it’s about inspiring others through your actions, showing courage in challenges, and guiding with purpose, compassion, and confidence.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+    <!-- new boxes -->
+
+    <!-- courses -->
+
+
+    <!-- <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
+                <h1 class="mb-5">Deep Dive into our courses!</h1>
+            </div>
+            <div class="container-courses">
+                <div class="carousel-view">
+                    <button id="prev-btn" class="prev-btn">
+                        <svg viewBox="0 0 512 512" width="20" title="chevron-circle-left">
+                            <path
+                                d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z" />
+                        </svg>
+                    </button>
+                    <div id="item-list" class="item-list">
+                        <div class="item">
+                            Double Masters Programme
+                        </div>
+                        <div class="item">
+                            Virtual Interactive Learning
+                        </div>
+                        <div class="item">
+                            Corporate Programmes
+                        </div>
+                        <div class="item">
+                            School of Business
+                        </div>
+                        <div class="item">
+                            Nimbus Special Programmes
+                        </div>
+
+                    </div>
+                    <button id="next-btn" class="next-btn">
+                        <svg viewBox="0 0 512 512" width="20" title="chevron-circle-right">
+                            <path
+                                d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div> -->
+   <style>
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .dark-blue-bg {
+    background-color: #001f3f;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  .light-box {
+    color: #fff;
+    border-radius: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 40px 20px;
+    margin: 20px auto;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+                0 10px 10px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transform: perspective(600px) translateZ(0);
+    transition: all 0.4s ease;
+  }
+
+  .light-box:hover {
+    transform: perspective(600px) translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.25),
+                0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .light-box i {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+  }
+
+  .light-box:hover i {
+    transform: scale(1.1);
+  }
+
+  /* Individual box colors */
+  .box-bca { background: #4a90e2; }
+  .box-bba { background: #6a1b9a; }
+  .box-ba  { background: #d81b60; }
+  .box-bcom { background: #f57c00; }
+  .box-mba  { background: #388e3c; }
+  .box-bed  { background: #1976d2; }
+
+  a.text-decoration-none {
+    color: inherit;
+
+  }
+  .light-box:hover {
+  background-color: white;
+  color:black;  
+  cursor: pointer;
+}
+
+.light-box:hover .fas {
+  /* Styles for the child on parent hover */
+  color: black;
+  transform: scale(1.8);
+}
+
+
+</style>
+
+<section class="our-academics paddingbox">
+  <div class="dark-blue-bg py-5">
+    <div class="heading mb-5 text-center">
+      <h2 class="section-title">Academic Programmes</h2>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+            <a href="Bca.html" class="text-decoration-none">
+          <div class="light-box box-bca">
+            <i class="fas fa-laptop-code"></i>
+            <div>B.C.A</div>
+          </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="BBA.html" class="text-decoration-none">
+          <div class="light-box box-bba">
+            <i class="fas fa-briefcase"></i>
+            <div>B.B.A</div>
+          </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="BA.html" class="text-decoration-none">
+          <div class="light-box box-ba">
+            <i class="fas fa-university"></i>
+            <div>B.A</div>
+          </div>
+            </a>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+            <a href="Bcom.html" class="text-decoration-none">
+          <div class="light-box box-bcom">
+            <i class="fas fa-coins"></i>
+            <div>B.Com</div>
+          </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+          <a href="Mba.html" class="text-decoration-none">
+            <div class="light-box box-mba">
+              <i class="fas fa-chart-line"></i>
+              <div>M.B.A</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+            <a href="Bed.html" class="text-decoration-none">
+          <div class="light-box box-bed">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <div>B.Ed.</div>
+          </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- <div class="welcome-section__top position-relative"
+        style="background-color:white; color: var(--c-fair-pink); margin-bottom: 30px;">
+
+        <div class="row">
+            <div class="col-lg-5" style="margin-top: 50px; ">
+                <div class="home-numbers pt-5 pb-5"
+                    style="margin-left: 30px; margin-right: 30px; color: var(--c-fair-pink);">
+                    <div class="row WebsiteStatusHtml">
+                        <div class="col-xl-6 col-lg-6 col-md-3 col-6">
+                            <div class="top-no">
+                                <div id="ctl02_divExp" class="top-no__count noCount">
+                                    <strong>25+</strong>
+                                </div>
+                                <p>Years of Academic <br>Excellence</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-3 col-6">
+                            <div class="top-no">
+                                <div id="ctl02_divMultidisciplinary" class="top-no__count noCount ">
+                                    <strong> 06+</strong>
+                                </div>
+                                <p>Academic Programes</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-3 col-6">
+                            <div class="top-no mb-0">
+                                <div id="ctl02_divPlacement" class="top-no__count noCount">
+                                    <strong>500+</strong>
+                                </div>
+                                <p>Companies Visited <br>For Placement</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-3 col-6">
+                            <div class="top-no mb-0">
+                                <div id="ctl02_divAlumni" class="top-no__count noCount">
+                                    <strong>20K+</strong>
+                                </div>
+                                <p>Glorious Alumni</p>
+                            </div>
+                        </div>
+                        <div class="aspNetHidden"> <input type="hidden" name="__VIEWSTATEGENERATOR"
+                                id="__VIEWSTATEGENERATOR" value="C21772F6"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="home-notifications pt-5 pb-5">
+                    <div style="
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-right: 30px;
+       
+         ">
+                        <div class="vertical-line"></div>
+                        <h1 style="color: var(--c-fair-pink);">Why Us ?</h1>
+                        <ul style="
+            display: flex;
+            flex-direction: column;
+            font-size: 17px;
+            text-align: justify;
+            gap: 2px;
+            ">
+                            <li>25 Years of experience in nurturing students into leaders with global mindset.</li>
+                            <li>Received “EXCELLENT HIGHER EDUCATION INSTITUTE” in 5th international education
+                                excellence award
+                                2020 organized by CMAI Association of India and International Telecommunication Union
+                                (ITU),
+                                Geneva, Switzerland (Parent organization of United Nations Economic & Social Council).
+                            </li>
+                            <li>Awarded ISO 9001 : 2015 for quality management system.</li>
+                            <li>Students who are willing to make their career in cricket have separate option to join
+                                Nimbus
+                                Cricket Academy with highly specialized coaches (BCCI certified level 1 & 2).</li>
+                            <li>23 players selected for Cricket Association of Uttarakhand (affiliated to BCCI ) in
+                                different
+                                categories in the year 2019-20.</li>
+                            <li>90% placement record.</li>
+                            <li>Smart class facility for online education and others.</li>
+                            <li>Online library facility with 10,000+ book title.</li>
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- about us -->
+    <div class="container-xxl py-5 about">
+        <div class="container" style="width: 100%; margin: 0 auto; display: flex; gap: 50px;">
+            <!-- image -->
+            <img src="./img/newImages/New folder/about us (2).jpg" width="450px"
+                style="width: 50%; border-radius: 10px; max-width: 100%; object-fit: cover; " alt="About Nimbus Academy of Management" loading="lazy" />
+
+
+            <!-- content -->
+            <div style="flex-basis: 50%;">
+                <h1>About Us</h1>
+                <p style="font-size: 17px; text-align: justify; ">Nimbus Academy of Management is one of Uttarakhand’s premier management institutes, established in 1998 under the leadership of the Doon Educational Trust Society (DETS)—a group of visionary educationists committed to academic excellence.
+
+Guided by our motto, “विद्याविनियोगात समृद्धि” which means “Fostering prosperity through the power of education,” Nimbus is built on the belief that knowledge is the foundation of progress and success.</p>
+                <ul style="font-size: 17px; text-align: justify; padding-left: 20px; list-style-type: disc;">
+    <li>Established in 1998, Nimbus Academy of Management is one of the premier management institutes in Uttarakhand.</li>
+    <li>It is governed by the Doon Educational Trust Society (DETS), a team of experienced and respected educationists.</li>
+    <li>Our motto, “विद्याविनियोगात समृद्धि”, means “Fostering prosperity through the power of education.”</li>
+    <li>Nimbus believes education goes beyond academics—it prepares students to lead in business, innovation, and life.</li>
+    <li>With over 28 years of experience, Nimbus blends academic learning with practical industry exposure.</li>
+    <li>Strong industry tie-ups ensure students gain hands-on understanding of modern business practices.</li>
+    <li>Our teaching approach balances theory with real-world application, making students job-ready and confident.</li>
+    <li>Emphasis is placed on entrepreneurial thinking, leadership development, and a global outlook.</li>
+    <li>Students benefit from workshops, internships, live projects, and industry visits, which enrich their skills.</li>
+    <li>The curriculum is designed to develop problem-solving, communication, and teamwork abilities.</li>
+    <li>Nimbus has earned a strong reputation among top recruiters across sectors, thanks to its skilled graduates.</li>
+    <li>Our consistent placement record reflects the quality of education and student preparedness.</li>
+    <li>Education at Nimbus is about discovering your potential, growing with confidence, and creating a successful future.</li>
+</ul>
+
+                <ul style="
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-size: 17px;
+                ">
+                    <!-- <li>Experienced Educators</li>
+                    <li>Esteemed Institution</li>
+                    <li>Robust Learning Modules</li> -->
+                </ul>
+                <a href="about.html" class="btn btn-primary py-2 px-lg-2" style="width: 35%;">Read
+                    More</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="container-xxl py-5 " >
+        <div class="container"
+        style="
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        "
+         >
+            <div class="service-card" >
+                Skilled Faculty
+            </div>
+            <div class="service-card" >
+                Daily Classes
+            </div>
+            <div class="service-card" >
+                Hostel's & PG
+            </div>
+            <div class="service-card" >
+                Library
+            </div>
+        </div>
+    </div> -->
+
+
+<style>
+    /* Outer border around the image */
+.campus-border-wrapper {
+  border: 5px solid #0d47a1; /* Change color if needed */
+  border-radius: 50px;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styling */
+.campus-carousel-img {
+  height: 737px;
+  object-fit: cover;
+  border-radius: 40px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* 3D effect on hover */
+.carousel-item:hover .campus-carousel-img {
+  transform: scale(1.03) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive image height */
+@media (max-width: 768px) {
+  .campus-carousel-img {
+    height: 300px;
+  }
+}
+
+</style>
+
+   <!-- Campus Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+      <h6 class="section-title bg-white text-center text-primary px-3">Campus</h6>
+      <h1 class="mb-5">Take a Tour</h1>
+    </div>
+
+    <!-- Bootstrap Carousel -->
+    <div id="campusCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <div class="campus-border-wrapper">
+            <img src="img/newImages/New folder/NIMBUS 154.jpg" class="campus-carousel-img d-block w-100" alt="Campus 1">
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="campus-border-wrapper">
+            <img src="img/newImages/New folder/NIMBUS 155.jpg" class="campus-carousel-img d-block w-100" alt="Campus 2">
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="campus-border-wrapper">
+            <img src="img/newImages/New folder/NIMBUS 156.jpg" class="campus-carousel-img d-block w-100" alt="Campus 3">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="campus-border-wrapper">
+            <img src="img/newImages/New folder/Nam_Sports_Ground.jpg" class="campus-carousel-img d-block w-100" alt="Campus 3">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Optional controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#campusCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#campusCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Campus End -->
+
+    <!-- Team End -->
+    <section class="our-news paddingbox">
+        <div class="container">
+            <div class="heading mb-5">
+                <h2> Location</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-8  ">
+                    <div class="blue-bg2 ">
+                        <div class="container2">
+                            <div id="tabpoint31" class="tabcontent2" style="display: block">
+                               <div class="tab-img">
+  <!-- Map of Nimbus Academy -->
+
+
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3443.2307935551225!2d77.89926637417418!3d30.344390104299578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f2a976fc404f5%3A0xa6ffeee8e5b56cc5!2sNIMBUS%20ACADEMY%20OF%20MANAGEMENT!5e0!3m2!1sta!2sin!4v1753361809367!5m2!1sta!2sin"
+    width="100%"
+    height="400"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+                                <!-- <h3><a href="#">Shantanu Salunke, a distinguished Design and Art educator at SOAD
+                                        Typography Workshop</a></h3> -->
+                                <div class="contentboxtab">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div id="tabpoint32" class="tabcontent2" style="display: none">
+                                <div class="tab-img">
+                                    <a href="#"><img src="#"
+                                            alt="Faculty Achievement | Ar. Sana Raza's article published in Tuijin Jishu/Journal of Propulsion Technology"
+                                            width="730" height="730" class="img-fluid"></a>
+                                </div>
+                                <h3><a href="#">Faculty Achievement | Ar. Sana Raza's article published in Tuijin
+                                        Jishu/Journal of Propulsion Technology</a></h3>
+                                <div class="contentboxtab">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div id="tabpoint33" class="tabcontent2" style="display: none">
+                                <div class="tab-img">
+                                    <a href="#"><img src="#"
+                                            alt="Dr. Venu Gopal Jarugumalli Ph.D., at Woxsen Universit as chief guest for MARK XXIV Hackathon"
+                                            width="730" height="730" class="img-fluid"></a>
+                                </div>
+                                <h3><a href="#">Dr. Venu Gopal Jarugumalli Ph.D., at NIMBUS as chief guest for MARK XXIV
+                                        Hackathon</a></h3>
+                                <div class="contentboxtab">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div id="tabpoint34" class="tabcontent2" style="display: none">
+                                <div class="tab-img">
+                                    <a href="#"><img src="#"
+                                            alt="Vipul Soni, Vice President and Global Chief Information & Digital Officer of Axalta, at 'Woxsen Leadership Series'"
+                                            width="730" height="730" class="img-fluid"></a>
+                                </div>
+                                <h3><a href="#">Vipul Soni, Vice President and Global Chief Information & Digital
+                                        Officer of Axalta, at 'Woxsen Leadership Series'</a></h3>
+                                <div class="contentboxtab">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div id="tabpoint35" class="tabcontent2" style="display: none">
+                                <div class="tab-img">
+                                    <a href="#"><img src="#"
+                                            alt="Architect Sathya Prakash Varanashi delivering a captivating lecture and workshop for SOAP students"
+                                            width="730" height="730" class="img-fluid"></a>
+                                </div>
+                                <h3><a href="#">Architect Sathya Prakash Varanashi delivering a captivating lecture and
+                                        workshop for SOAP students</a></h3>
+                                <div class="contentboxtab">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div id="tabpoint36" class="tabcontent2" style="display: none">
+                                <div class="tab-img">
+                                    <a href="#"><img src="#"
+                                            alt="Paresh Mistry, SOAD student featured in IIT Hyderabad Newsletter for founding Avisa"
+                                            width="730" height="730" class="img-fluid"></a>
+                                </div>
+                                <h3><a href="#">Paresh Mistry, SOAD student featured in IIT Hyderabad Newsletter for
+                                        founding Avisa</a></h3>
+                                <div class="contentboxtab">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-4">
+  <div class="news-container">
+    <div class="news-heading">
+      What's New &nbsp;<i class="fas fa-solid fas fa-bullhorn"></i>
+    </div>
+
+    <div class="news-ticker-wrapper">
+      <div class="news-ticker">
+
+        <div class="news-item">
+          <div class="news-meta">
+            <!-- <span class="new-sticker">NEW</span> -->
+            <span class="posted-date">Posted on: 10 July 2023</span>
+          </div>
+          Nimbus has been conferred "EXCELLENT HIGHER EDUCATION INSTITUTE" Award presented by
+          CMAI Association of India & ITU-APT Foundation of India in the 5th International Education
+          Excellence Summit held live at Geneva, Switzerland.
+        </div>
+
+        <div class="news-item">
+          <div class="news-meta">
+            <span class="new-sticker">NEW</span>
+            <span class="posted-date">Posted on: 16 July 2025</span>
+          </div>
+          On 16th July, at Nimbus, our faculty proudly participated in a meaningful celebration —
+          nurturing nature, culture, and community spirit. Dr. Rajesh Tiwari, Director of Nimbus, also
+          graced the occasion with his presence.
+        </div>
+
+        <div class="news-item">
+          <div class="news-meta">
+            <!-- <span class="new-sticker">NEW</span> -->
+            <span class="posted-date">Posted on: 18 Dec 2023</span>
+          </div>
+          A one-day national webinar on "Guidance for Writing an Effective Research Paper" was held
+          on December 18, 2023.
+        </div>
+
+        <!-- Duplicates for smooth loop -->
+        <div class="news-item">
+          <div class="news-meta">
+            <span class="new-sticker">NEW</span>
+            <span class="posted-date">Posted on: 10 July 2025</span>
+          </div>
+          Nimbus has been conferred "EXCELLENT HIGHER EDUCATION INSTITUTE" Award presented by
+          CMAI Association of India & ITU-APT Foundation of India in the 5th International Education
+          Excellence Summit held live at Geneva, Switzerland.
+        </div>
+
+        <div class="news-item">
+          <div class="news-meta">
+            <span class="new-sticker">NEW</span>
+            <span class="posted-date">Posted on: 16 July 2025</span>
+          </div>
+          On 16th July, at Nimbus, our faculty proudly participated in a meaningful celebration —
+          nurturing nature, culture, and community spirit. Dr. Rajesh Tiwari, Director of Nimbus, also
+          graced the occasion with his presence.
+        </div>
+        <div class="news-item">
+          <div class="news-meta">
+            <span class="new-sticker">NEW</span>
+            <span class="posted-date">Posted on: 27july 2025</span>
+          </div>
+          Prof. Rakesh Kumar Dhodi and his team conducted a surprise visit to our campus for the inspection of BBA and BCA courses, along with other official engagements. The visit focused on reviewing academics, infrastructure, and student interaction, highlighting our commitment to quality education.
+
+
+        </div>
+
+        <div class="news-item">
+          <div class="news-meta">
+            <!-- <span class="new-sticker">NEW</span> -->
+            <span class="posted-date">Posted on: 18 Dec 2023</span>
+          </div>
+          A one-day national webinar on "Guidance for Writing an Effective Research Paper" was held
+          on December 18, 2023.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+/* Make section span full width */
+.full-width-event {
+  margin: 0;
+  padding: 0;
+}
+
+/* Full-width dark blue background */
+.event-marquee-wrapper {
+  margin-left: -22%;
+  width: 145%;
+  background-color: #0b3c5d;
+  padding: 60px 40px 20px; /* Adjusted to allow "View All" space */
+  overflow: hidden;
+  color: white;
+  position: relative;
+  z-index: 0;
+  box-sizing: border-box;
+}
+
+/* Heading styling */
+.event-marquee-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.event-marquee-heading h2 {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+/* Marquee container */
+.event-marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Marquee track */
+.event-track {
+  display: inline-flex;
+  animation: scroll-left 30s linear infinite;
+}
+
+/* Event card styling */
+.event-item {
+  flex-shrink: 0;
+  min-width: 300px;
+  margin-right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-size: 14px;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 1;
+}
+
+/* Event title */
+.event-item h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.event-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  color: black;
+  cursor: pointer;
+  background-color: white;
+  z-index: 10;
+}
+
+.event-item:hover h3 {
+  color: black;
+}
+
+/* Background color variants */
+.color1 { background-color: #007bff; }
+.color2 { background-color: #28a745; }
+.color3 { background-color: #fd7e14; }
+
+/* Scroll animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover (optional) */
+.event-marquee:hover .event-track {
+  animation-play-state: paused;
+}
+
+/* View All link inside blue container */
+.event-readmore-wrapper {
+  text-align: right;
+  padding-top: 10px;
+}
+
+.event-readmore-link {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.event-readmore-link:hover {
+  color: #ffeb3b;
+  text-decoration: underline;
+}
+
+</style>
+
+  <!---Events Start--->
+<section class="our-event full-width-event pb-0 mt-5">
+  <div class="event-marquee-wrapper">
+    <div class="event-marquee-heading">
+      <h2>Events</h2>
+    </div>
+
+    <div class="event-marquee">
+      <div class="event-track">
+        <!-- Original Event Items -->
+        <div class="event-item color1">
+          <h3>April 27, 2024</h3>
+          <p>Farewell to Management, Humanities, and Education department in the Multipurpose Hall.</p>
+        </div>
+        <div class="event-item color2">
+          <h3>April 25, 2024</h3>
+          <p>Career counseling webinar on MBA opportunities. Register now!</p>
+        </div>
+        <div class="event-item color3">
+          <h3>May 1, 2024</h3>
+          <p>Sports meet inauguration for all departments. Don't miss it!</p>
+        </div>
+        <!-- Duplicated Items for seamless loop -->
+        <div class="event-item color1">
+          <h3>April 27, 2024</h3>
+          <p>Farewell to Management, Humanities, and Education department in the Multipurpose Hall.</p>
+        </div>
+        <div class="event-item color2">
+          <h3>April 25, 2024</h3>
+          <p>Career counseling webinar on MBA opportunities. Register now!</p>
+        </div>
+        <div class="event-item color3">
+          <h3>May 1, 2024</h3>
+          <p>Sports meet inauguration for all departments. Don't miss it!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- View All Link inside container, right-aligned -->
+    <div class="event-readmore-wrapper">
+      <a href="Event.html" class="event-readmore-link">View All &gt;</a>
+    </div>
+  </div>
+</section>
+<!---Events End--->
+
+
+
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
+                <h1 class="mb-5">Our Students Say!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/0.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Ashish silswal</h5>
+                    <p>MBA (2021-2023) <br /></p>
+                    <p style="font-weight: 700;">Deputy Manager - Kotak Mahindra Bank, Rishikesh</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">"I am fine and hope that you too will be in the best of your moods and spirits.
+                            It's been a privilege to be a part of this highly reputed institution. The time spent there
+                            will be always appreciable and memorable throughout my life. The journey of 2 years had been
+                            a cake walk only because of the full support of my teachers and the other non- teaching
+                            staff of the College. I feel cherished and proud of being an alumni of such a reputed and
+                            honorable academy.The knowledge and experience gained here is and will be always be helpful.
+                            I feel so privileged that you chose me for being a member of the association of the alumni.
+                            It will be really a great honour for being part of this association."</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/1.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Shamshed Ali</h5>
+                    <p>MBA (2020-2022) <br /></p>
+                    <p style="font-weight: 700;">Marketing Executive - Just Dail, Bihar
+                    </p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">“Above the hills and far away. <br />
+                            Business school on the way. <br />
+                            A faculty one ever dream. <br />
+                            Are known as Kashmiris cream <br />
+                            Efficiency and effectiveness touches the door <br />
+                            Visit the school to know more...”
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/2.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Pratiksha Mehra</h5>
+                    <p>BA (2019-2022) <br /></p>
+                    <p style="font-weight: 700;">Hospital Administration - S.G.R.R. Dehradun
+                    </p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">"It has been great pleasure to be part of NIMBUS ACADEMY OF MANAGEMENT .The
+                            College has played an important role in my personality development and career building. The
+                            college and department in particular has always been helpful and encouraging. I owe my
+                            success to the college and wish the college all the success in the future"</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/3.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Ivan Kumar</h5>
+                    <p>BA (2019-2022) <br /></p>
+                    <p style="font-weight: 700;">Administration Officer - Carman Residential and Day School, Dehradun
+                    </p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">"At the very outset I would like to express my heartiest thanks to the NIMBUS
+                            family. I extend my warm regards to my dept, the Dept. of Managemnt which has immensely
+                            helped me succeed.I am highly indebted to the entire NIMBUS family, in particular, Dept. of
+                            Management for helping me achieve great heights for the generous contribution you have made
+                            to my educational and academic pursuit."</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/4.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Sapna Mishra</h5>
+                    <p>MBA (2018-2020) <br /></p>
+                    <p style="font-weight: 700;">Corporate Talent Acquisition - Net2Source, Dehradun
+                    </p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">"Education is the process of acquiring knowledge through teaching and learning.
+                            It opens the gates of wisdom and helps am individual to understand the difference between
+                            the right and the wrong, truth and false. It teaches an individual how to make his living
+                            and how to lead a disciplined life. Education in its essence is not just book reading it is
+                            an all- round development process that aims at developing the vision of the people. A
+                            student must be versatile, dynamic and innovative being who is able to know the pulse and
+                            pace of world around him."</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/5.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Tanuj Upreti</h5>
+                    <p>MBA (2018-2020) <br /></p>
+                    <p style="font-weight: 700;">Sales - (GsK) Dehradun, Uttrakhand
+                    </p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">"Nimbus College is one of the best educational institution in the valley having
+                            the best faculty and infrastructure which provide conducive atmosphere for students to learn
+                            and excel in every field in their life."</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/6.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Anuj Tyagi</h5>
+                    <p>MBA (2017-2019) <br /></p>
+                    <p style="font-weight: 700;">Operation Cordinator - BAMKO, Dehradun
+                    </p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">"You are not born to be raised as robots, every human has a unique quality and
+                            you need to find yours, expecting a fish to climb a tree would be insanity similarly
+                            expecting each one of you to do similar things will be no different! Think beyond the
+                            classroom lectures and explore the opportunities the world provides."</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/7.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Nikita</h5>
+                    <p>MBA (2018-2020) <br /></p>
+                    <p style="font-weight: 700;">Corporate Talent Acquisition - Net2Source ,Dehradun
+                    </p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">"I have travelled across the World and I owe my success to my Alma Mater. I
+                            explored my potential at Nimbus .which I don’t think anywhere else would have been possible.
+                            With my all round learning & grooming, I gained confidence to accept the challenges and to
+                            conquer them. I can’t thank enough my Faculty at Nimbus who even now guide me & are my
+                            mentors forever. I felt so proud to be invited to be a part of the Alumni Conclave. Nimbus
+                            Alumni Network is an exceptional platform that connects nimbus across the World and I am
+                            glad to be part of this Network."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Testimonial End -->
+
+    <!-- Message Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Vice Chancellors Message</h6>
+                <h1 class="mb-5">Our Vice Chancellors Says!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                <div class="testimonial-item text-center">
+                  <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/Ds-Chauhan.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Prof. D.S. Chauhan <br /> (03 Jan 2009 to 07 Aug 2013)</h5>
+                    <p>Vice Chancellor</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">I am pleased to learn that NIMBUS Academy of Management is bringing out
+                            its prospectus cum Information Bulletin. It is appreciable that NIMBUS
+                            Academy of Management has adopted a transparent approach through their
+                            prospectus to apprise the students and their parents about the infrastructure,
+                            faculty status, wi-fi internet connectivity, and the various activities offered in
+                            management courses run by the Institute over decade and one of the oldest
+                            institute in Dehradun, which will enable the students to assess the capability of
+                            the institute. <br /> My hearticst congratulation to the Management, dedicated faculty,
+                            staff and is
+                            students. <br /> I wish the college, its faculty and students all success</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                   <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/vk jain.jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Prof. V.K Jain <br /> (04 Sept 2013 to 20 March 2015)</h5>
+                    <p>Vice Chancellor</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">It gives me great pleasure that "Nimbus Academy of Management" Dehradun, is
+                            entering the forthcoming Academic Session having established itself
+                            as one of the premier management Institutes of Uttarakhand Technical University. Beginning
+                            in the year 1998, the Institute has come a long way in offering AlCTE approved quality
+                            Academic Programmes in Management through competent human resource of faculty members and
+                            very good physical infrastructure.
+                            <br /> I wish the Institute the very best in its endeavor to provide good quality technical
+                            education in the state of Utarakhand.
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                  <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/Prof.-Dr.-U.-S.-Rawat (1).jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Dr. U.S. Rawat<br /> (31 Oct 2017 to 11 Oct 2018)</h5>
+                    <p>Vice Chancellor</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                      
+                        <p class="mb-0">It gives me immense pleasure that "Nimbus Academy of Management" Dehradun, is
+                            entering the forthcoming Academie Session having established itself as one of the
+                            premier management Institute of Uttarakhand Technical University. Beginning in the
+                            year 1998, the Institute has come a long way in offering AlCTE approved quality
+                            Academic Programmes in Management through competent human resource of faculty
+                            members and very good physical infrastructure. <br />
+                            I wish the Institute the very best in its endeavor to provide good quality technical
+                            education in the state of Uttarakhand. </p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                  <img class="border rounded-circle p-2 mx-auto mb-3" src="./img/testimonials/narendra-chaudhari (1).jpg"
+                        style="width: 80px; height: 80px; object-fit: cover; ">
+                    <h5 class="mb-0">Prof. Narendra Chaudhari <br /> (29 Jan 2019 to 02 March 2021)</h5>
+                    <p>Vice Chancellor</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Ihe Institute, Nimbus Academy of Management ,alfiliated to Utaraklhand Technical
+                            University. Dehradun has been providing value based quality professional education in
+                            Uttarakhand. Started in ycar 1998, the Institute has come a long way in offering AICTE
+                            approved quality academic program1mes in management through competent human resource
+                            of faculty members and very good physical infrastructure.
+                            The institute nurtures the personality of the students by providing them ample opportunity
+                            to showcase their achievements through academics, sports and other extra-curricular
+                            activities. The academic environment provides ample opportunity for overall growth of the
+                            students, leading to the academic excellence.
+                            I am sure that Nimbus Academy of Management wvill continue to progress in the future and
+                            I wish the institute greal success at every step. <br />
+                            My best wishes to entire team of Nimbus Acadeny, Dehradun.
+                        </p>
+                    </div>
+                </div>
+                <!---<div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-4.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Client Name</h5>
+                    <p>Profession</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                    </div>
+                </div>
+                ----->
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Message End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Quick Link</h4>
+                    <div>                            
+                    <a class="btn btn-link" href="about.html">About Us</a>
+                    <a class="btn btn-link" href="contact.html">Contact Us</a>
+                    <a class="btn btn-link" href="#">Privacy Policy</a>
+                    <a class="btn btn-link" href="#">Terms & Condition</a>
+                    <a class="btn btn-link" href="FAQ.html">FAQs & Help</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>National Highway 72 Jhajra, Chakrata Rd,
+                        Dehradun, Uttarakhand 248007</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>7088019933, +91-9897580644</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>namdehradun@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/nimbus0098/"><i
+                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social"
+                            href="https://www.facebook.com/nimbusacademydehradun/ "><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social"
+                            href="https://youtube.com/@nimbusacademydehradunuttar7524?si=CxdEu2cO5wtk24aC"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social"
+                            href="https://in.linkedin.com/in/nimbus-academy-of-management-528abb9a"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <!---
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Gallery</h4>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            --->
+                <div class="col-lg-3 col-md-6">
+                    <!-- <h4 class="text-white mb-3">Newsletter</h4>
+                     -->
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button"
+                            class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">NIMBUS</a>, All Right Reserved.
+
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                      <!----  Designed By <a class="border-bottom" href="#">Ankit Gairola</a>---->
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="index.html">Home</a>
+                            <a href="">Cookies</a>
+                            <a href="">Help</a>
+                            <a href="FAQ.html">FAQs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+
+
+
+    <!---Social Media Start-->
+    <div class="floating-social">
+        <a href="https://api.whatsapp.com/send?phone=9897580644" target="_blank" rel="noopener">
+            <img src="./img/assests/wp.png" alt="WhatsApp">
+        </a>
+        <a href="tel:+91-9897580644">
+            <img src="./img/assests/ph.png" alt="Phone">
+        </a>
+        <button type="button" class="button-unstyled">
+            <img src="./img/assests/if.png" alt="Enquiry" style="height: 30px; width: 30px;">
+        </button>
+    </div>
+    </div>
+    <!---Social Media end-->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+<!-- Chatbox Button with Label -->
+<div id="chatbot-float-wrapper">
+  <div class="chat-label">Chat here</div>
+  <a href="#" id="chatbot-button" class="btn btn-lg btn-primary btn-lg-square">
+    <i class="bi bi-chat-dots"></i>
+  </a>
+</div>
+  
+  <!-- Chatbot Window -->
+  <div id="chatbot-window" style="margin-right: 5%; height: 42%;">
+    <div id="chatbot-header">AI Chatbot <span id='closeDiv' style="margin-left:65%; cursor: pointer;">X</span></div>
+    <div id="chatbot-messages" class="parent"></div>
+    <div id="chatbot-input" class="child">
+      <input type="text" id="user-input" placeholder="Type a message...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+        const toggleBtn = document.querySelector('.navbar-toggler');
+        const navbar = document.getElementById('nav-link-container');
+        const ug = document.querySelector('.ug-nav');
+        const navLinksUG = document.querySelector('.double-nav-links');
+
+        ug.addEventListener('mousedown', () => {
+            navLinksUG.style.display = 'block';
+        })
+
+        ug.addEventListener('mouseup', () => {
+            navLinksUG.style.display = 'none';
+        })
+
+        let toggle = false;
+
+        toggleBtn.addEventListener('click', () => {
+            toggle = !(toggle);
+            if (toggle === true) {
+                navbar.classList.remove("hidden");
+                navbar.classList.add("show");
+            } else {
+                navbar.classList.remove("show");
+                navbar.classList.add("hidden");
+            }
+        })
+        const prev = document.getElementById('prev-btn')
+        const next = document.getElementById('next-btn')
+        const list = document.getElementById('item-list')
+
+        if (prev && next && list) {
+            const itemWidth = 150
+            const padding = 10
+
+            prev.addEventListener('click', () => {
+                list.scrollLeft -= itemWidth + padding
+            })
+
+            next.addEventListener('click', () => {
+                list.scrollLeft += itemWidth + padding
+            })
+        }
+    </script>
+    <!-- Chatbot Script -->
+  <script>
+    // Toggle chatbot window
+$('#chatbot-button, #closeDiv').click(function () {
+    $('#chatbot-window').toggle();
+    $("#chatbot-messages").html('');
+});
+
+
+
+// Predefined bot responses
+function getBotResponse(input) {
+    input = input.toLowerCase();
+    if (input.includes("hello") || input.includes("hi")) return "Hello! How can I help you today?";
+    if (input.includes("course") || input.includes("bca")) return "We offer BCA, MBA, BBA, and more. Visit the Courses section on our site.";
+    if (input.includes("admission")) return "You can apply online through our Admission tab or contact us at +91-7088019933.";
+    if (input.includes("location")) return "We are located at NH-72, Jhajra, Chakrata Road, Dehradun.";
+    return "I'm not sure about that. Please contact our support or check the website.";
+}
+
+// Send message
+$('#send-btn').click(function () {
+    const userInput = $('#user-input').val();
+    if (userInput.trim() === "") return;
+
+    // Display the user's message (sanitized to prevent XSS)
+    const safeInput = $('<div>').text(userInput).html();
+    $('#chatbot-messages').append(`<div class="message user">${safeInput}</div>`);
+    
+    // Get bot response and display after a short delay
+    const botResponse = getBotResponse(userInput);
+    setTimeout(() => {
+        $('#chatbot-messages').append(`<div class="message bot">${botResponse}</div>`);
+        // Scroll to the bottom of the chat window
+        $('#chatbot-messages').scrollTop($('#chatbot-messages')[0].scrollHeight);
+    }, 500);
+
+    // Clear the input field
+    $('#user-input').val('');
+});
+
+// Send message when pressing Enter
+$('#user-input').keypress(function (e) {
+    if (e.which == 13) $('#send-btn').click();  // Trigger the click on the send button
+});
+  </script>
+  <!-- <script>
+  window.addEventListener('load', function () {
+    var myModal = new bootstrap.Modal(document.getElementById('welcomePopup'));
+    myModal.show();
+  });
+</script> -->
+
+</body>
+
+</html>

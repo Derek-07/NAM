@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Nimbus</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <!-- Favicon -->
+    <link href="img/logologo-150x150.png" rel="icon">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.5em;
+            margin: 0;
+        }
+        .card-description {
+            color: #666;
+            margin: 10px 0 0;
+        }
+        .card-more-content {
+            display: none;
+            color: #666;
+            margin-top: 10px;
+        }
+        .card .read-more {
+            margin-top: 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- old navbar -->
+    <!-- <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img src="img/nam-logo-new-1-1.png" alt="" style="width: 200px; height: 70px;">
+     <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>eLEARNING</h2>--
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="about.html" class="dropdown-item">About us</a>
+                        <a href="misson&vision.html" class="dropdown-item">Mission & Vision</a>
+                        <a href="chairmans's message.html" class="dropdown-item">Chairman's Message</a>
+                        <a href="Director'sMessage.html" class="dropdown-item">Director's Message</a>
+                        <a href="404.html" class="dropdown-item">Faculty</a>
+                        <a href="404.html" class="dropdown-item">Governing Council</a>
+                        <a href="404.html" class="dropdown-item">Advisiory Counsil</a>
+                        <a href="404.html" class="dropdown-item">Internal Committees</a>
+                    </div>
+                </div>
+
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admissions</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="404.html" class="dropdown-item">Eligiblity</a>
+                        <a href="404.html" class="dropdown-item">Admissions Process</a>
+                        <a href="404.html" class="dropdown-item">Fee Structure</a>
+                        <a href="404.html" class="dropdown-item">Payment</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Memberships</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="404.html" class="dropdown-item">PEARSON UG ENTRANCE EXAM</a>
+                        <a href="404.html" class="dropdown-item">ICT ACADEMY</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Courses</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="Mba.html" class="dropdown-item">MBA</a>
+                        <a href="BBA.html" class="dropdown-item">BBA</a>
+                        <a href="Bcom.html" class="dropdown-item">B.COM.</a>
+                        <a href="Bca.html" class="dropdown-item">BCA</a>
+                        <a href="Bed.html" class="dropdown-item">B.Ed.</a>
+                        <a href="BA.html" class="dropdown-item">BA</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">facilities</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="#" class="dropdown-item">Library</a>
+                        <a href="#" class="dropdown-item">Computer</a>
+                        <a href="#" class="dropdown-item">Sports</a>
+                        <a href="#" class="dropdown-item">Transport</a>
+                        <a href="#" class="dropdown-item">Cafeteria</a>
+                        <a href="#" class="dropdown-item">Smartclass</a>
+                        <a href="#" class="dropdown-item">Swayam</a>
+                        <a href="#" class="dropdown-item">Teacher Training Policy(AICTE) </a>
+                        <a href="#" class="dropdown-item">National Academic Depository</a>
+                        <a href="#" class="dropdown-item">Examination Reform Policy</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="alumni.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Alumni</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="404.html" class="dropdown-item">First ALumni Meet</a>
+                        <a href="404.html" class="dropdown-item">Second Alumni Meet</a>
+                        <a href="404.html" class="dropdown-item">Alumni Speak</a>
+                        
+                    </div>
+                </div>
+                <a href="placement.html" class="nav-item nav-link">Placements</a>
+                <a href="404.html" class="nav-item nav-link">Results</a>
+                <a href="Gallery.html" class="nav-item nav-link">Gallery</a>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="contact.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Apply Now<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav> -->
+
+    <!-- Navbar Start -->
+    <nav class="nav-bar  navbar-expand-lg navbar-light bg-light">
+
+
+        <div class="nav-one w-100" >
+            <div>
+                <img src="./img/assests/NIM.png" alt="Logo" style="width: 90%; height: auto;">
+
+
+            </div>
+
+
+            <div class="nav-right-images" style="padding: 17px;">
+                <!-- image 2 -->
+                <div class="nav-right-images">
+                    <img src="./img/assests/28_new.png" class="w-100" />
+                    <!-- <img class="right-image-2" src="./img/assests/iso.png" width="20%" height="60px" /> -->
+                </div>
+            </div>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- nav links -->
+
+
+
+        <div class="collapse navbar-collapse " id="navbarNavDropdown" style="width: 100%;">
+            <div class="nav-links" id="nav-link-container" style="width: 100%;margin-right: -15px;">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">About</a>
+                    <div class="dropdown-menu fade-down mt-0 " style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="about.html" class="dropdown-item">About us</a>
+                        <a href="misson&vision.html" class="dropdown-item">Mission & Vision</a>
+                        <a href="chairmans's message.html" class="dropdown-item">Chairman's Message</a>
+                        <a href="Director'sMessage.html" class="dropdown-item">Director's Message</a>
+                        <!-- <a href="404.html" class="dropdown-item">Vice Chancellors' Message</a> -->
+                        <a href="foundationHistory.html" class="dropdown-item">Foundation History</a>
+                        <a href="governingCouncil.html" class="dropdown-item">Governing Council</a>
+                        <!-- <a href="404.html" class="dropdown-item">Board Of Governors</a> -->
+                         <a href="ExtensionApproval.html" class="dropdown-item">Mandatory Disclosure</a>
+                        <!-- <a href="404.html" class="dropdown-item">Awards & Certificates</a> -->
+                        <a href="internalCell.html" class="dropdown-item">Internal Committee</a>
+                    </div>
+
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Academic Programs</a>
+                    <div class="dropdown-menu fade-down" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="#" class="dropdown-item nav-item ug-nav dropdown double-nav ">
+                            UG-
+                            <div class="arrow-right"></div>
+                            <div class="double-nav-links">
+                                <a href="/BA.html" class="dropdown-item">
+                                    -BA
+                                </a>
+                                <a href="/BBA.html" class="dropdown-item">
+                                    -BBA
+                                </a>
+                                <a href="/Bcom.html" class="dropdown-item">
+                                    -B.Com
+                                </a>
+                                <a href="/Bca.html" class="dropdown-item">
+                                    -BCA
+                                </a>
+                            </div>
+                        </a>
+                        <a href="Mba.html" class="dropdown-item">PG- MBA</a>
+                        <a href="Bed.html" class="dropdown-item">Nimbus School Of Education – B.Ed</a>
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Faculty & Research</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="faculty.html" class="dropdown-item">Faculty Members</a>
+                        <a href="faculty_bed.html" class="dropdown-item">Faculty B.Ed</a>
+                        <!-- <a href="404.html" class="dropdown-item">Visiting Faculty Members</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Research & Publications</a> -->
+                        <!-- <a href="internalCell.html" class="dropdown-item">Internal Cell</a> -->
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Resources</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="library.html" class="dropdown-item">Library</a>
+                        <a href="itinfrastructure.html" class="dropdown-item">IT Infrastructure</a>
+                        <a href="sports.html" class="dropdown-item">Sports</a>
+                        <a href="multipurposehall.html" class="dropdown-item">Auditorium</a>
+                        <a href="hostel.html" class="dropdown-item">Hostel</a>
+                        <a href="cafeteria.html" class="dropdown-item">Cafeteria</a>
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="" class="nav-link " data-bs-toggle="dropdown">Corporate Placement</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="placementCommittee.html" class="dropdown-item">Placement Committee</a>
+                        <a href="placementReport.html" class="dropdown-item">Placement Reports</a>
+                        <a href="recruitmentActivities.html" class="dropdown-item">Recruitment Activities</a>
+                        <!-- <a href="#" class="dropdown-item">Summer Internships</a> -->
+                        <!-- <a href="#" class="dropdown-item">Our Recruiters</a> -->
+                        <a href="FAQ.html" class="dropdown-item">Recruitment FAQ</a>
+                        <a href="careerEnhancement.html" class="dropdown-item">Career Enhancement Initiatives</a>
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="alumni.html" class="nav-link " data-bs-toggle="dropdown">Admission</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <a href="admissionPage.html" class="dropdown-item">Overview</a>
+                        <a href="adminssionCriteria.html" class="dropdown-item">Admission Criteria</a>
+                        <a href="coursefee.html" class="dropdown-item">Course Fee</a>
+                        <!-- <a href="404.html" class="dropdown-item">How To Apply</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Visit The Campus</a> -->
+                        <a href="registration.html" class="dropdown-item">Registration</a>
+                        <a href="courses/index_courses.html" class="dropdown-item">cour</a>
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="alumni.html" class="nav-link " data-bs-toggle="dropdown">Alumni</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <!-- <a href="404.html" class="dropdown-item">Alumni Testimonials</a> -->
+                        <a href="alumni_details.html" class="dropdown-item">Alumni Details</a>
+                         <!-- <a href="404.html" class="dropdown-item">Alumni Profile</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Albums</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Contact Us</a> -->
+                    </div>
+                </div>
+                <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="alumni.html" class="nav-link " data-bs-toggle="dropdown">Campus Life</a>
+                    <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                        <div class="arrow-up"></div>
+                        <!-- <a href="404.html" class="dropdown-item">News Room</a> -->
+                        <a href="Photos.html" class="dropdown-item">Photo Gallery</a>
+                        <!-- <a href="404.html" class="dropdown-item">Event Calander</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">AICTE EoA</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Scholarship</a> -->
+                        <!-- <a href="404.html" class="dropdown-item">Art & Culture</a> -->
+                    </div>
+                </div>
+                <!-- <div class="straight-line"></div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link " data-bs-toggle="dropdown">Registration</a>
+                </div> -->
+                <div class="straight-line"></div>
+                    <div class="nav-item dropdown">
+                        <a href="" class="nav-link " data-bs-toggle="dropdown">Student Corner</a>
+                        <div class="dropdown-menu fade-down m-0" style="margin-top: 38px !important;">
+                            <div class="arrow-up"></div>
+                            <a href="Downloads.html" class="dropdown-item">Downloads Forms</a>
+                            <a href="Results.html" class="dropdown-item">Results</a>   
+                              </div>
+                    </div>
+                    
+                    <a id="apply-btn" href="#" class="btn btn-primary py-2 px-lg-2 d-none d-lg-block"
+                    style="background-color: #1FCAC5; color: white; font-weight: 500; ">Apply Now</a>
+            </div>
+            <button>
+
+            </button>
+        </div>
+
+</div>
+</nav>
+    <!-- Navbar End -->
+
+     <!-- popup form -->
+     <div class="popup-overlay" id="popupOverlay">
+
+        <div class="popup" id="popup">
+    
+            <span class="close" id="closePopup">&times;</span>
+    
+            <div class="popup-content">
+    
+                <p>Enquiry Now !</p>
+
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="276a43fb-d0b6-47c1-952c-659bd1ee67cd">
+                    <input class="inputForm m-3" name="Name" type="text" placeholder="Enter Name" id="name">
+                    <input class="inputForm m-3" name="Email" type="email" placeholder="Enter Email" id="email">
+                    <!-- <label for="course">Choose courses:</label> -->
+                    <input class="inputForm m-3" name="Courses" type="text" placeholder="Enter Course" id="course" list="courses">
+                    <datalist id="courses">
+                        <option value="BA">
+                        <option value="BBA">
+                        <option value="MBA">
+                        <option value="B.com">
+                        <option value="Bca">
+                        <option value="B.Ed">
+                    </datalist>
+                    <input class="inputForm m-3" name="Phone_number" type="number" placeholder="Enter Phone" id="phone">
+                    <button onclick="submitForm()">Submit</button>
+    
+                </form>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+
+
+    <!-- Carousel Start -->
+    
+            
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- new boxes -->
+  
+
+    <!-- courses -->
+    <h1 style="text-align: center;">faculties</h1>
+    <div class="card-container">
+        
+        <div class="card">
+            <img src="img/faculty/DEEPIKA.jpg" alt="Image 1">
+            <div class="card-content">
+                <h2 class="card-title">Deepika Rawat</h2>
+                <h6>Assistant professor</h6>
+                <!-- <p class="card-description">This is a description of the first card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                   <h4>Area</h4>
+                   <ul>
+                        <li>
+                            Primary Area : Finance
+                        </li>
+                        <li>
+                            Secondary Area : Marketing Management
+                        </li>
+                   </ul>
+                   <h4>Contact</h4>
+                   <ul>
+                        <li>
+                            Email : deepikarawat491@gmail.com	
+                        </li>
+                        <li>
+                            Phone : 7895538296
+                        </li>
+                   </ul>
+                   <h4>Education</h4>
+                   <ul>
+                        <li>
+                            M.Com (Finance and Marketing) Dolphin P.G institute of biomedical and natural science, Manduwala, Dehradun
+                        </li>
+                        <li>
+                            B.Com ( D.D College, Nimbhuwala, Dehradun)
+                        </li>
+                   </ul>
+                   <h4>Teaching</h4>
+                   <ul>
+                        <li>Financial Accounting </li>
+                        <li>Financial Management</li>
+                        <li>Business Finance</li>
+                        <li>GST</li>
+                        <li>Income tax and laws</li>
+                        <li>Managerial Economics</li>
+                        <li>Financial institutions and markets</li>
+                        <li>Entrepreneurship</li>
+                        <li>Company Law</li>
+                   </ul>
+                   <h4>Research Area</h4>
+                   <ul>
+                        <li>FinancialAnalysis  </li>
+                        <li>Accounting</li>
+                        <li>Taxation</li>
+                        <li>Marketing</li>
+                        <li>HumanResources </li>
+                   </ul>
+                   <h4>Academic Experience</h4>
+                   <ul>
+                        <li>Faculty Member, Nav Chetna College , June 2023 onwards</li>
+                        <li>Faculty Member , Nimbus Academy Management, October 2023 onwards</li>
+                       
+                   </ul>
+                   <h4>Professional Experience</h4>
+                   <ul>
+                        <li>Nimbus Academy of Management</li>
+                   </ul>
+                </div>
+                <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/faculty/priya sharma.jpg" alt="Image 2">
+            <div class="card-content">
+                <h2 class="card-title">Priya Sharma</h2>
+                <h6>Assistant Professor </h6>
+                <!-- <p class="card-description">This is a description of the second card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                         <li>
+                            Primary area :  Human Resource Management
+                         </li>
+                         <li>
+                             Secondary Area : Organizational Behaviour  
+                         </li>
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                         <li>
+                             Email : Priyasharma31659@gmail.com
+                         </li>
+                         <li>
+                             Phone : 9027866411 
+                         </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                         <li>
+                            Pursing Doctoral Program (PHD) in Commerce , Manglayatan University Aligarh .  
+                         </li>
+                         <li>
+                            Master of Commerce, Swami Vivekananda Subharti University Meerut  
+                         </li>
+                         <li>BBA, Maharshi Dayananda University Rohtak  </li>
+                         <li>Bachelor of Education, Maharshi Dayananda University Rohtak  </li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                         <li>Human Resource Management  </li>
+                         <li>Organizational Behavior  </li>
+                        
+                    </ul>
+                    <h4>Research Area</h4>
+                    <ul>
+                         <li>Human Resource Management</li>
+                         <li>  Organizational Behaviour  </li>
+
+                    </ul>
+                    <h4>Academic Experience</h4>
+                    <ul>
+                         <li>Faculty Member ,SRS Institute of Education and Technology Meerut,  
+                            December 2018 onwards  
+                            </li>
+                         <li>Faculty Member, Nimbus Academy of Management Dehradun ,November  2022 Onwards  </li>
+                        
+                    </ul>
+                    <h4>Professional Experience</h4>
+                    <ul>
+                         <li>School of Management  </li>
+                    </ul>
+                 </div>
+                 <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+            
+        </div>
+        <div class="card">
+            <img src="img/faculty/SANJAY GAIROLA.JPG" alt="Image 3">
+            <div class="card-content">
+                <h2 class="card-title">Sanjay Gairola</h2>
+                <h6>Assistant professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                         <li>
+                            Marketing And Human resource management
+                         </li>
+                         
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                         <li>
+                             Email : sanjaygairola999@gmail.com
+                         </li>
+                         <li>
+                             Phone : 7088019933 
+                         </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                         <li>
+                            Pursuing Ph.D. from Monad University, Hapur (UP)
+                         </li>
+                         <li>
+                            Master of Commerce, Swami Vivekananda Subharti University Meerut  
+                         </li>
+                         <li>M.B.A From U.T.U in 2013</li>
+                         <li>M.A. Sociology in 2018</li>
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                         <li>Marketing Management, Consumer Behavior, Rural Marketing </li>
+                     
+                        
+                    </ul>
+                   
+                    <h4>Academic Experience</h4>
+                    <ul>
+                         <li>10 Years of teaching excellence</li>
+                       
+                        
+                    </ul>
+                    <h4>Academic Conferences and FDPs</h4>
+                    <ul>
+                         <li>Participated in AICTE online FDP on “Design Thinking” at Graduate School of Management Studies, GTU.</li>
+                         <li>Attended state level workshop on VIRTUAL LABS, IIT DELHI at ICFAI University, Dehradun.</li>
+                         <li>Attended EXAMINATION REFORMS WORKSHOP organized by AICTE at Tula’s Institute, Dehradun.</li>
+                         <li>Attended International webinar “LEAN SUPPLY CHAIN MANAGEMENT” at SNS College of Technology, Coimbatore.</li>
+                    </ul>
+                 </div>
+                 <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <img src="img/faculty/Naveen.jpg" alt="Image 4">
+            <div class="card-content">
+                <h2 class="card-title">Naveen Rana</h2>
+                <h6>Assistant professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                         <li>
+                            Management and Marketing.
+                         </li>
+                         
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                         <li>
+                             Email : rananaveen494@gmail.com
+                         </li>
+                         <li>
+                             Phone : 8171033049 
+                         </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                         <li>
+                            BBA in Marketing from SGRR University.
+                         </li>
+                         <li>
+                            MBA in Marketing from Graphic Era Deemed to be University. 
+                         </li>
+                         
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                         <li>Principles and Practices of Management</li>
+                           <li>Marketing Management</li> 
+                            <li>Behaviour</li> 
+                            <li>Business & Marketing Research </li>
+                     
+                        
+                    </ul>
+                   
+                    <h4>Academic Experience</h4>
+                    <ul>
+                         <li>Faculty Member of Nimbus Academy Management, 17 September 2024</li>
+                         
+                    </ul>
+                     <h4>Professional Experience</h4>
+                    <ul>
+                         <li>Work in "Berger Paints" as Sales Officer Trainee.</li>
+                    </ul>    
+                    
+                 </div>
+                 <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img/faculty/Sheijal.jpeg" alt="Image 5">
+            <div class="card-content">
+                <h2 class="card-title">Saijal Lakherwal </h2>
+                <h6>Assistant professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                         <li>
+                            Primary Area: HR
+
+                         </li>
+                         
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                         <li>
+                             Email : Sejal652@gmail.com
+
+                         </li>
+                         <li>
+                             Phone : 8171918022
+ 
+                         </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                         <li>
+                            BBA in HR from HNBGU
+
+
+                         </li>
+                         <li>
+                             MBA in HR ICFAI University
+                         </li>
+                         
+                         
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                         <li>Human Resource Management  </li>
+                     
+                            
+                     
+                            
+                        
+                    </ul>
+                   
+                    <h4>Reserch Area</h4>
+                    <ul>
+                         <li>Human Resource Management</li>
+                            
+                       
+                        
+                    </ul>
+                    <h4>Academic Experience
+                    </h4>
+                    <ul>
+                         
+                            <li>1st April </li>
+                        </ul>
+                            <h4>Professional Experience
+                            </h4>
+                            <ul>
+                         <li> Teleperformance as a godaddy Trainer.</li>
+                              </ul>
+                    
+                 </div>
+                 <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img/faculty/Vaishali.jpg" alt="Image 6">
+            <div class="card-content">
+                <h2 class="card-title">Vaishali Gupta </h2>
+                <h6>Assistant professor</h6>
+                <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+                <div class="card-more-content">
+                    <h4>Area</h4>
+                    <ul>
+                         <li>
+                            Primary area-Political Science
+                         </li>
+                         
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                         <li>
+                            Email-guptavaishali1010@gmail.com
+                         
+                            
+                         </li>
+                         <li>
+                             Phone :9368956398
+                         </li>
+                    </ul>
+                    <h4>Education</h4>
+                    <ul>
+                         <li>
+                            Pursuing Ph.D. from Monad University, Hapur (UP)
+                         </li>
+                         <li>
+                            Post Graduate (M.A in Political science)from Indira Gandhi National Open University
+
+Graduate-(B.A in political science, sociology, hindi) from Shri Dev Suman University
+
+
+                         </li>
+                        
+                    </ul>
+                    <h4>Teaching</h4>
+                    <ul>
+                         <li>Political science</li>
+                         <li>Sociology</li> 
+                         <li>Co- curricular</li>
+                    
+                     </ul>
+                   
+                    <h4>Academic Experience</h4>
+                    <ul>
+                         <li>As a assistant professor of political science from 2024 in Nimbus Academy of Management, Dehradun</li>
+                       
+                        
+                    
+                 </div>
+                 <button class="read-more" onclick="toggleContent(this)">Read More</button>
+            </div>
+        </div>
+    
+
+
+
+    <div class="card">
+        <img src="img/faculty/dr.tikaram pandey.jpg" alt="Image 7">
+        <div class="card-content">
+            <h2 class="card-title">Dr. Tilak Ram Pandey</h2>
+            <h6>Assistant professor</h6>
+            <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+            <div class="card-more-content">
+                <h4>Area</h4>
+                <ul>
+                     <li>
+                        History
+                     </li>
+                     
+                </ul>
+                <h4>Research Area</h4>
+                <ul>
+                     <li>
+                        Historical Study
+                     </li>
+                     
+                </ul>
+                <h4>Contact</h4>
+                <ul>
+                     <li>
+                        Email-ramtika1984@gmail.com
+                     
+                        
+                     </li>
+                     <li>
+                         Phone :7579424004
+                     </li>
+                </ul>
+                <h4>Education</h4>
+                <ul>
+                     <li>
+                        Master in arts, PHD
+                     </li>
+                     <li> BA.B.ed
+
+
+                     </li>
+                    
+                </ul>
+                <h4>Teaching</h4>
+                <ul>
+                     <li>History</li>
+                     
+                
+                 </ul>
+               
+                <h4>Academic Experience</h4>
+                <ul>
+                     <li>Guest faculty in HNBGU.</li>
+
+                </ul>
+                     
+                     
+                <h4>Professional Experience</h4>
+                    
+                 <ul>
+                        <li>Nimbus Acadmey of management.</li>
+                    </ul>
+                    
+                
+             </div>
+             <button class="read-more" onclick="toggleContent(this)">Read More</button>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="card">
+        <img src="img/faculty/lav kumar.jpg" alt="Image 8">
+        <div class="card-content">
+            <h2 class="card-title">Lav Kumar </h2>
+            <h6>Assistant professor</h6>
+            <!-- <p class="card-description">This is a description of the third card. It provides some basic information about the content.</p> -->
+            <div class="card-more-content">
+                <h4>Area</h4>
+                <ul>
+                     <li>
+                        Hindi
+
+                     </li>
+                     
+                </ul>
+                <h4>Contact</h4>
+                <ul>
+                     <li>
+                         Email : kluvkumar1993@gmail.com
+
+                     </li>
+                     <li>
+                         Phone : 9756192287
+
+                     </li>
+                </ul>
+                <h4>Education</h4>
+                <ul>
+                     <li> B.ed, MA, BA, net.
+                        
+
+
+                     </li>
+                     
+                     
+                     
+                </ul>
+                <h4>Teaching</h4>
+                <ul>
+                     <li>Hindi</li>
+                 
+                        
+                 
+                        
+                    
+                </ul>
+               
+              
+                        <h4>Professional Experience
+                        </h4>
+                        <ul>
+                     <li> Nimbus Aacademy of Management</li>
+                          </ul>
+                
+             </div>
+             <button class="read-more" onclick="toggleContent(this)">Read More</button>
+        </div>
+    </div>
+</div>
+    <!-- Categories Start -->
+    
+
+ <!-- Footer Start -->
+ <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Quick Link</h4>
+                <a class="btn btn-link" href="">About Us</a>
+                <a class="btn btn-link" href="">Contact Us</a>
+                <a class="btn btn-link" href="">Privacy Policy</a>
+                <a class="btn btn-link" href="">Terms & Condition</a>
+                <a class="btn btn-link" href="">FAQs & Help</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Contact</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>National Highway 72 Jhajra, Chakrata Rd,
+                    Dehradun, Uttarakhand 248007</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>7088019933, +91-9897580644</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>namdehradun@gmail.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/nimbus0098/"><i
+                            class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light btn-social"
+                        href="https://www.facebook.com/nimbusacademydehradun/ "><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social"
+                        href="https://youtube.com/@nimbusacademydehradunuttar7524?si=CxdEu2cO5wtk24aC"><i
+                            class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social"
+                        href="https://in.linkedin.com/in/nimbus-academy-of-management-528abb9a"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <!---
+        <div class="col-lg-3 col-md-6">
+            <h4 class="text-white mb-3">Gallery</h4>
+            <div class="row g-2 pt-2">
+                <div class="col-4">
+                    <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                </div>
+                <div class="col-4">
+                    <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                </div>
+                <div class="col-4">
+                    <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                </div>
+                <div class="col-4">
+                    <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                </div>
+                <div class="col-4">
+                    <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                </div>
+                <div class="col-4">
+                    <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        --->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Newsletter</h4>
+                
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                    <button type="button"
+                        class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">NIMBUS</a>, All Right Reserved.
+
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom" href="#">Zupinn</a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="index.html">Home</a>
+                        <a href="">Cookies</a>
+                        <a href="">Help</a>
+                        <a href="">FQAs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+  
+
+    
+
+    <!---Social Media Start-->
+    <div class="floating-social">
+        <a href="https://api.whatsapp.com/send?phone=9897580644" target="_blank" rel="noopener">
+            <img src="/img/assests/wp.png" alt="whatsapp">
+        </a>
+        <a href="tel:+91-9897580644">
+            <img src="/img/assests/ph.png" alt="phone">
+        </a>
+        <button type="button" class="button-unstyled">
+            <img src="/img/assests/if.png" alt="email" style="height: 30px; width: 30px;">
+        </button>
+    </div>
+
+    <!---Social Media end-->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+        </script>
+    <script>
+        const prev = document.getElementById('prev-btn')
+        const next = document.getElementById('next-btn')
+        const list = document.getElementById('item-list')
+
+        const itemWidth = 150
+        const padding = 10
+
+        prev.addEventListener('click',()=>{
+        list.scrollLeft -= itemWidth + padding
+        })
+
+        next.addEventListener('click',()=>{
+        list.scrollLeft += itemWidth + padding
+        })
+
+
+        function toggleContent(button) {
+            const card = button.closest('.card');
+            const moreContent = card.querySelector('.card-more-content');
+            if (moreContent.style.display === 'block') {
+                moreContent.style.display = 'none';
+                button.textContent = 'Read More';
+            } else {
+                moreContent.style.display = 'block';
+                button.textContent = 'Read Less';
+            }
+        }
+    </script>
+</body>
+
+</html>
