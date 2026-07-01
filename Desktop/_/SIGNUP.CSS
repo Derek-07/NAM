@@ -1,0 +1,30 @@
+body{
+    background-image: url(teagardenn.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.adheader{
+    text-align: center;
+    text-size-adjust: 100px;
+    background:red;
+    width:500px;
+    height:50px;
+
+
+}
+.adminpage{
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-decoration: double;
+    border-style: solid;
+    color: black;
+    margin: auto;
+    height:400px;
+    width:300px;
+   
+}
+
+    
+
+
