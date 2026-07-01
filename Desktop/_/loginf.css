@@ -1,0 +1,25 @@
+body{
+background-color:grey;
+background-image: url(teagardenn.jpeg);
+background-repeat: no-repeat;
+background-size: cover;
+}
+.LOGIN{
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    text-decoration: double;
+    border-style: solid;
+    border-color: black;
+    margin: auto;
+    height:400px;
+    width:300px;
+    /*border-width: 1cap;*/
+    background-color: antiquewhite;
+   background-image: url(teagardenn.jpeg);
+}
+#dl{
+    background-color: brown;
+    width:500px;
+    height:50px;
+}
